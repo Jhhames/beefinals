@@ -18,3 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', function(){
+    return view('index');
+});
+Route::prefix('employee')->group(function() {
+    Route::get('/login', 'Auth\EmployeeLoginController@showLoginForm')->name('admin.login');
+    Route::post('/login', 'Auth\EmployeeLoginController@login')->name('admin.login.submit');
+    Route::get('/home', 'EmployeeController@index')->name('admin.home');
+    Route::get('/dashboard', 'EmployeeController@index')->name('admin.home');
+});
