@@ -92,7 +92,7 @@ class HomeController extends Controller
         return Task::where('done',0)->get();        
     }
 
-    public function makeAppraisal(Request $request){
+    public function makeAppraisal(Request $request,$id){
         /* 
         fillables for model Appraisal 
         employee, report , employee , summary
@@ -151,6 +151,29 @@ class HomeController extends Controller
 
         if($user){
             Session::flash('success','New Employee added');
+            return redirect()->back();
+        }else{
+            Session::flash('error','Some errors occured, try again');
+            return redirect()->back();
+        }
+    }
+
+    public function addAdmin(Request $request){
+        $this->validate($request,[
+            'email' => 'required',
+            'name' => 'required',
+            'position' => 'required',
+        ]);
+
+        $user = User::create([
+            'email'=> $request->email,
+            'name' => $request->name,
+            'position' => $request->position,
+            'password' => Hash::make('admin')
+        ]);
+
+        if($user){
+            Session::flash('success','New Admin added');
             return redirect()->back();
         }else{
             Session::flash('error','Some errors occured, try again');

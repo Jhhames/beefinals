@@ -68,7 +68,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             
                             <!-- End Toggle Button -->
                             <!-- BEGIN LOGO -->
-                            <a id="index" class="page-logo" href="index.html">
+                            <a id="index" class="page-logo" href="">
                                 {{-- <img src="" alt="Logo">  --}}
                                 <span style="font-family: 'Anton', sans-serif; font-size: 40px">
                                 NACOSS<span style="color:white !important">PRINTS</span>
@@ -92,6 +92,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </li>
                                         <li>
                                             <a data-toggle="modal" data-target="#addTask"> <span class="icon-calculator"></span> New Task</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="modal" data-target="#addAdmin"> <span class="icon-wrench"></span> New Admin</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -807,16 +810,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="caption">
                                         <i class="icon-share font-dark hide"></i>
                                         <span class="caption-subject font-dark bold uppercase">Tasks</span>
-                                        <span class="caption-helper">tasks summary...</span>
+                                        
                                     </div>
-                                    <div class="actions">
-                                        <div class="btn-group">
-                                            <a class="btn blue-oleo btn-circle btn-sm" href="javascript:;" > More
-                                                <i class="fa fa-angle-down"></i>
-                                            </a>
-                                            
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                                 <div class="portlet-body">
                                     <div class="task-content">
@@ -1160,7 +1156,54 @@ License: You must have a valid license purchased only from themeforest(the above
     
     
 {{-- END OF MODAL TWO --}}
+ {{-- MODAL 3 --}}
+ <div class="modal fade" id="addAdmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel" >New Admin </h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Default form register -->
+            <form action="{{ route('employer.admin.submit') }}" method="POST">
+                @csrf
+                    <div class="form-group">
+                        <label for="empName" class="font-weight-bold"><strong> Full Name </strong></label>
+                        <input type="text" placeholder="Enter New Name" class="form-control" name="name" id="empName">
+                    </div>
+                    <div class="form-group">
+                        <label for="emailAddresss" class="font-weight-bold"><strong> Email Address </strong></label>
+                        <input type="email" name="email" id="emailAddress" placeholder="Enter Employee Email Address" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="empRole" class="font-weight-bold"><strong> Position </strong></label>
+                        <select name="position" id="empRole" class="form-control">
+                            <option value="CEO"> CEO </option>
+                            <option value="HR"> HR </option>
+                            <option value="CTO"> CTO </option>
+                        </select>
+                    </div>
+                    
+    
+                    <button class="btn btn-primary">
+                        Add Admin
+                    </button>
+                </form>
+            <!-- Default form register -->
+            </div>
+            <div class="modal-footer">
+              {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button> --}}
+            </div>
+          </div>
+        </div>
+      </div>
+    
 
+ {{-- END OF MODAL 3  --}}
         {{-- END OF MODALS --}}
         <script src="/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
         <script src="/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
