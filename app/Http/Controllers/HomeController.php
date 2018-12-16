@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use App\User;
+use DateTime;
 use App\Leave;
 use App\Employee;
 use App\Appraisal;
@@ -35,10 +36,25 @@ class HomeController extends Controller
         return view('employer.index')->with([
             'employees' => $this->getEmployees(),
             'admins' => $this->getAdmins(),
+            'appraisals' => $this->getAppraisals(),
+            'leaves' => $this->getLeave(),
+            'pending' => $this->getPending(),
+            'tasks' => $this->getTasks(),
+            'pendingTasks' => $this->getPendingTasks(),
         ]);
     }
 
+    public function approveLeave(Request $request, $id){
+        $leave = Leave::where('id',$id);
+        if($leave->exists()){
+            $leave->update(['approved'=>1]);
+            Session::flash('success','Leave Approved');
 
+            return redirect()->back();
+        }else{
+
+        }
+    }
 
     public function makeTask(Request $request){
         $this->validate($request,[
@@ -54,7 +70,8 @@ class HomeController extends Controller
         $task = new Task;
         $task->task = $request->task;
         $task->description = $request->description;
-        $task->due_date = $dateTimeStamp;
+        $task->assigned_at = Time();
+        $task->due_date = $request->dueDate;
         $task->employee = $request->employee;
         $task->employer = Auth::user()->name;
         
@@ -69,6 +86,10 @@ class HomeController extends Controller
 
     public function getTasks(){
         return Task::all();        
+    }
+
+    public function getPendingTasks(){
+        return Task::where('done',0)->get();        
     }
 
     public function makeAppraisal(Request $request){
@@ -101,11 +122,15 @@ class HomeController extends Controller
     }
 
     public function getAppraisals(){
-        return Appraisal::all();
+        return Appraisal::latest()->get();
     }   
 
+    public function getPending(){
+        return Leave::where('approved',0)->latest()->get();
+    }
+
     public function getLeave(){
-        return Leave::all();
+        return Leave::latest()->get();
     }
 
     public function addEmployee(Request $request){
@@ -167,3 +192,22 @@ class HomeController extends Controller
         return User::latest()->get();
     }
 }
+
+
+// "Done with the real programming but putting in html is quite a stress so here is how it goes
+
+// 1. I didn't add an employee sign up(since it didn't make sense for *anyone* with a link to add himself as a company employee, the admin would have to add the employee and on login, he'll add his own additional details";
+
+// "In the admin portal
+// (url to login would be beefinals.herokuapp.com/login), he'll be able to
+// see all employees and their details, 
+// he'll be able to 
+// add new employee
+// add task for employee
+// add new admin aswell
+// see new employee appraisal on his TL
+// see and approve or reject leave request 
+// see tasks and weda they're done or not 
+// (not programmed feature) See all company activities
+// activites like task done, employee added, admin added, leave added, leave accepted and co
+// ";

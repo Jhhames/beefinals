@@ -91,7 +91,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <a data-toggle="modal" data-target="#addEmployee"> <span class="icon-user"></span> New Employee</a>
                                         </li>
                                         <li>
-                                            <a href="#"> <span class="icon-calculator"></span> New Task</a>
+                                            <a data-toggle="modal" data-target="#addTask"> <span class="icon-calculator"></span> New Task</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -183,7 +183,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <i class="widget-thumb-icon bg-red icon-layers"></i>
                                     <div class="widget-thumb-body">
                                         <span class="widget-thumb-subtitle"></span>
-                                        <span class="widget-thumb-body-stat" data-counter="counterup" data-value="13">0</span>
+                                    <span class="widget-thumb-body-stat" data-counter="counterup" data-value="{{ count($pending) }}">0</span>
                                     </div>
                                 </div>
                             </div>
@@ -197,7 +197,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <i class="widget-thumb-icon bg-purple icon-list"></i>
                                     <div class="widget-thumb-body">
                                         <span class="widget-thumb-subtitle"></span>
-                                        <span class="widget-thumb-body-stat" data-counter="counterup" data-value="85">0</span>
+                                        <span class="widget-thumb-body-stat" data-counter="counterup" data-value="{{count($tasks)}}">0</span>
                                     </div>
                                 </div>
                             </div>
@@ -211,7 +211,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <i class="widget-thumb-icon bg-blue icon-list"></i>
                                     <div class="widget-thumb-body">
                                         <span class="widget-thumb-subtitle"></span>
-                                        <span class="widget-thumb-body-stat" data-counter="counterup" data-value="51">0</span>
+                                        <span class="widget-thumb-body-stat" data-counter="counterup" data-value="{{count($pendingTasks)}}">0</span>
                                     </div>
                                 </div>
                             </div>
@@ -258,190 +258,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     @endforeach
                                                 @endif
                                                 
-                                                <div class="mt-comment">
-                                                    <div class="mt-comment-img">
-                                                        <img src="/assets/pages/media/users/avatar6.jpg" /> </div>
-                                                    <div class="mt-comment-body">
-                                                        <div class="mt-comment-info">
-                                                            <span class="mt-comment-author">Larisa Maskalyova</span>
-                                                            <span class="mt-comment-date">12 Feb, 08:30AM</span>
-                                                        </div>
-                                                        <div class="mt-comment-text"> It is a long established fact that a reader will be distracted. </div>
-                                                        <div class="mt-comment-details">
-                                                            <span class="mt-comment-status mt-comment-status-rejected">Rejected</span>
-                                                            <ul class="mt-comment-actions">
-                                                                <li>
-                                                                    <a href="#">Quick Edit</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">View</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Delete</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mt-comment">
-                                                    <div class="mt-comment-img">
-                                                        <img src="/assets/pages/media/users/avatar8.jpg" /> </div>
-                                                    <div class="mt-comment-body">
-                                                        <div class="mt-comment-info">
-                                                            <span class="mt-comment-author">Natasha Kim</span>
-                                                            <span class="mt-comment-date">19 Dec,09:50 AM</span>
-                                                        </div>
-                                                        <div class="mt-comment-text"> The generated Lorem or non-characteristic Ipsum is therefore or non-characteristic. </div>
-                                                        <div class="mt-comment-details">
-                                                            <span class="mt-comment-status mt-comment-status-pending">Pending</span>
-                                                            <ul class="mt-comment-actions">
-                                                                <li>
-                                                                    <a href="#">Quick Edit</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">View</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Delete</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mt-comment">
-                                                    <div class="mt-comment-img">
-                                                        <img src="/assets/pages/media/users/avatar4.jpg" /> </div>
-                                                    <div class="mt-comment-body">
-                                                        <div class="mt-comment-info">
-                                                            <span class="mt-comment-author">Sebastian Davidson</span>
-                                                            <span class="mt-comment-date">10 Dec, 09:20 AM</span>
-                                                        </div>
-                                                        <div class="mt-comment-text"> The standard chunk of Lorem or non-characteristic Ipsum used since the 1500s or non-characteristic. </div>
-                                                        <div class="mt-comment-details">
-                                                            <span class="mt-comment-status mt-comment-status-rejected">Rejected</span>
-                                                            <ul class="mt-comment-actions">
-                                                                <li>
-                                                                    <a href="#">Quick Edit</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">View</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Delete</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                             <!-- END: Comments -->
                                         </div>
-                                        <div class="tab-pane" id="portlet_comments_2">
-                                            <!-- BEGIN: Comments -->
-                                            <div class="mt-comments">
-                                                <div class="mt-comment">
-                                                    <div class="mt-comment-img">
-                                                        <img src="/assets/pages/media/users/avatar4.jpg" /> </div>
-                                                    <div class="mt-comment-body">
-                                                        <div class="mt-comment-info">
-                                                            <span class="mt-comment-author">Michael Baker</span>
-                                                            <span class="mt-comment-date">26 Feb, 10:30AM</span>
-                                                        </div>
-                                                        <div class="mt-comment-text"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy. </div>
-                                                        <div class="mt-comment-details">
-                                                            <span class="mt-comment-status mt-comment-status-approved">Approved</span>
-                                                            <ul class="mt-comment-actions">
-                                                                <li>
-                                                                    <a href="#">Quick Edit</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">View</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Delete</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mt-comment">
-                                                    <div class="mt-comment-img">
-                                                        <img src="/assets/pages/media/users/avatar8.jpg" /> </div>
-                                                    <div class="mt-comment-body">
-                                                        <div class="mt-comment-info">
-                                                            <span class="mt-comment-author">Larisa Maskalyova</span>
-                                                            <span class="mt-comment-date">12 Feb, 08:30AM</span>
-                                                        </div>
-                                                        <div class="mt-comment-text"> It is a long established fact that a reader will be distracted by. </div>
-                                                        <div class="mt-comment-details">
-                                                            <span class="mt-comment-status mt-comment-status-approved">Approved</span>
-                                                            <ul class="mt-comment-actions">
-                                                                <li>
-                                                                    <a href="#">Quick Edit</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">View</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Delete</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mt-comment">
-                                                    <div class="mt-comment-img">
-                                                        <img src="/assets/pages/media/users/avatar6.jpg" /> </div>
-                                                    <div class="mt-comment-body">
-                                                        <div class="mt-comment-info">
-                                                            <span class="mt-comment-author">Natasha Kim</span>
-                                                            <span class="mt-comment-date">19 Dec,09:50 AM</span>
-                                                        </div>
-                                                        <div class="mt-comment-text"> The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc. </div>
-                                                        <div class="mt-comment-details">
-                                                            <span class="mt-comment-status mt-comment-status-approved">Approved</span>
-                                                            <ul class="mt-comment-actions">
-                                                                <li>
-                                                                    <a href="#">Quick Edit</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">View</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Delete</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mt-comment">
-                                                    <div class="mt-comment-img">
-                                                        <img src="/assets/pages/media/users/avatar1.jpg" /> </div>
-                                                    <div class="mt-comment-body">
-                                                        <div class="mt-comment-info">
-                                                            <span class="mt-comment-author">Sebastian Davidson</span>
-                                                            <span class="mt-comment-date">10 Dec, 09:20 AM</span>
-                                                        </div>
-                                                        <div class="mt-comment-text"> The standard chunk of Lorem Ipsum used since the 1500s </div>
-                                                        <div class="mt-comment-details">
-                                                            <span class="mt-comment-status mt-comment-status-approved">Approved</span>
-                                                            <ul class="mt-comment-actions">
-                                                                <li>
-                                                                    <a href="#">Quick Edit</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">View</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Delete</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- END: Comments -->
-                                        </div>
+                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -454,12 +275,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <span class="caption-subject font-dark bold uppercase"> Leave Requests </span>
                                     </div>
                                     <ul class="nav nav-tabs">
-                                        <li class="active">
-                                            <a href="#tab_actions_pending" data-toggle="tab"> Pending </a>
+                                        <li >
+                                            <a href="" data-toggle="tab"> view all </a>
                                         </li>
-                                        <li>
-                                            <a href="#tab_actions_completed" data-toggle="tab"> Completed </a>
-                                        </li>
+                                        
                                     </ul>
                                 </div>
                                 <div class="portlet-body">
@@ -467,174 +286,81 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <div class="tab-pane active" id="tab_actions_pending">
                                             <!-- BEGIN: Actions -->
                                             <div class="mt-actions">
-                                                <div class="mt-action">
-                                                    <div class="mt-action-img">
-                                                        <img src="/assets/pages/media/users/avatar10.jpg" /> </div>
-                                                    <div class="mt-action-body">
-                                                        <div class="mt-action-row">
-                                                            <div class="mt-action-info ">
-                                                                <div class="mt-action-icon ">
-                                                                    <i class="icon-magnet"></i>
-                                                                </div>
-                                                                <div class="mt-action-details ">
-                                                                    <span class="mt-action-author">Natasha Kim</span>
-                                                                    <p class="mt-action-desc">Dummy text of the printing</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="mt-action-datetime ">
-                                                                <span class="mt-action-date">3 jun</span>
-                                                                <span class="mt-action-dot bg-green"></span>
-                                                                <span class="mt=action-time">9:30-13:00</span>
-                                                            </div>
-                                                            <div class="mt-action-buttons ">
-                                                                <div class="btn-group btn-group-circle">
-                                                                    <button type="button" class="btn btn-outline green btn-sm">Appove</button>
-                                                                    <button type="button" class="btn btn-outline red btn-sm">Reject</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mt-action">
-                                                    <div class="mt-action-img">
-                                                        <img src="/assets/pages/media/users/avatar3.jpg" /> </div>
-                                                    <div class="mt-action-body">
-                                                        <div class="mt-action-row">
-                                                            <div class="mt-action-info ">
-                                                                <div class="mt-action-icon ">
-                                                                    <i class=" icon-bubbles"></i>
-                                                                </div>
-                                                                <div class="mt-action-details ">
-                                                                    <span class="mt-action-author">Gavin Bond</span>
-                                                                    <p class="mt-action-desc">pending for approval</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="mt-action-datetime ">
-                                                                <span class="mt-action-date">3 jun</span>
-                                                                <span class="mt-action-dot bg-red"></span>
-                                                                <span class="mt=action-time">9:30-13:00</span>
-                                                            </div>
-                                                            <div class="mt-action-buttons ">
-                                                                <div class="btn-group btn-group-circle">
-                                                                    <button type="button" class="btn btn-outline green btn-sm">Appove</button>
-                                                                    <button type="button" class="btn btn-outline red btn-sm">Reject</button>
+                                                @if(isset($leaves))
+                                                    @foreach ($leaves as $item)
+                                                    @if($item->approved)
+                                                    <div class="mt-action">
+                                                            <div class="mt-action-img">
+                                                                <img src="/assets/pages/media/users/avatar10.jpg" /> </div>
+                                                            <div class="mt-action-body">
+                                                                <div class="mt-action-row">
+                                                                    <div class="mt-action-info ">
+                                                                        <div class="mt-action-icon ">
+                                                                            <i class="icon-magnet"></i>
+                                                                        </div>
+                                                                        <div class="mt-action-details ">
+                                                                            <span class="mt-action-author"> {{ $item->employee }} </span>
+                                                                            <p class="mt-action-desc"> Leave Request </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="mt-action-datetime ">
+                                                                        <span class="mt-action-date"></span>
+                                                                        <span class="mt-action-dot bg-green"></span>
+                                                                        <span class="mt=action-time">{{ $item->duration }}</span>
+                                                                    </div>
+                                                                    <div class="mt-action-buttons ">
+                                                                        <div class="btn-group btn-group-circle">
+                                                                            <strong class="text-primary">
+                                                                                Approved
+                                                                            </strong>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mt-action">
-                                                    <div class="mt-action-img">
-                                                        <img src="/assets/pages/media/users/avatar2.jpg" /> </div>
-                                                    <div class="mt-action-body">
-                                                        <div class="mt-action-row">
-                                                            <div class="mt-action-info ">
-                                                                <div class="mt-action-icon ">
-                                                                    <i class="icon-call-in"></i>
-                                                                </div>
-                                                                <div class="mt-action-details ">
-                                                                    <span class="mt-action-author">Diana Berri</span>
-                                                                    <p class="mt-action-desc">Lorem Ipsum is simply dummy text</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="mt-action-datetime ">
-                                                                <span class="mt-action-date">3 jun</span>
-                                                                <span class="mt-action-dot bg-green"></span>
-                                                                <span class="mt=action-time">9:30-13:00</span>
-                                                            </div>
-                                                            <div class="mt-action-buttons ">
-                                                                <div class="btn-group btn-group-circle">
-                                                                    <button type="button" class="btn btn-outline green btn-sm">Appove</button>
-                                                                    <button type="button" class="btn btn-outline red btn-sm">Reject</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mt-action">
-                                                    <div class="mt-action-img">
-                                                        <img src="/assets/pages/media/users/avatar7.jpg" /> </div>
-                                                    <div class="mt-action-body">
-                                                        <div class="mt-action-row">
-                                                            <div class="mt-action-info ">
-                                                                <div class="mt-action-icon ">
-                                                                    <i class=" icon-bell"></i>
-                                                                </div>
-                                                                <div class="mt-action-details ">
-                                                                    <span class="mt-action-author">John Clark</span>
-                                                                    <p class="mt-action-desc">Text of the printing and typesetting industry</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="mt-action-datetime ">
-                                                                <span class="mt-action-date">3 jun</span>
-                                                                <span class="mt-action-dot bg-red"></span>
-                                                                <span class="mt=action-time">9:30-13:00</span>
-                                                            </div>
-                                                            <div class="mt-action-buttons ">
-                                                                <div class="btn-group btn-group-circle">
-                                                                    <button type="button" class="btn btn-outline green btn-sm">Appove</button>
-                                                                    <button type="button" class="btn btn-outline red btn-sm">Reject</button>
+                                                    @else
+                                                    <div class="mt-action">
+                                                            <div class="mt-action-img">
+                                                                <img src="/assets/pages/media/users/avatar11.jpg" /> </div>
+                                                            <div class="mt-action-body">
+                                                                <div class="mt-action-row">
+                                                                    <div class="mt-action-info ">
+                                                                        <div class="mt-action-icon ">
+                                                                            <i class="icon-magnet"></i>
+                                                                        </div>
+                                                                        <div class="mt-action-details ">
+                                                                            <span class="mt-action-author"> {{ $item->employee }} </span>
+                                                                            <p class="mt-action-desc"> Leave Request </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="mt-action-datetime ">
+                                                                        <span class="mt-action-date"></span>
+                                                                        <span class="mt-action-dot bg-green"></span>
+                                                                        <span class="mt=action-time">{{ $item->duration }}</span>
+                                                                    </div>
+                                                                    <div class="mt-action-buttons ">
+                                                                        <form action="{{ url('/admin/approveLeave/'.$item->id) }}" id="approve_form"  method="POST">
+                                                                            @csrf
+                                                                        </form>
+                                                                        
+                                                                        <div class="btn-group btn-group-circle">
+                                                                            <a href="approve" onclick="event.preventDefault();
+                                                                            document.getElementById('approve_form').submit();">
+
+                                                                                <button type="button" class="btn btn-outline green btn-sm">Appove</button>
+                                                                                
+                                                                            </a>
+
+                                                                            
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mt-action">
-                                                    <div class="mt-action-img">
-                                                        <img src="/assets/pages/media/users/avatar8.jpg" /> </div>
-                                                    <div class="mt-action-body">
-                                                        <div class="mt-action-row">
-                                                            <div class="mt-action-info ">
-                                                                <div class="mt-action-icon ">
-                                                                    <i class="icon-magnet"></i>
-                                                                </div>
-                                                                <div class="mt-action-details ">
-                                                                    <span class="mt-action-author">Donna Clarkson </span>
-                                                                    <p class="mt-action-desc">Simply dummy text of the printing</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="mt-action-datetime ">
-                                                                <span class="mt-action-date">3 jun</span>
-                                                                <span class="mt-action-dot bg-green"></span>
-                                                                <span class="mt=action-time">9:30-13:00</span>
-                                                            </div>
-                                                            <div class="mt-action-buttons ">
-                                                                <div class="btn-group btn-group-circle">
-                                                                    <button type="button" class="btn btn-outline green btn-sm">Appove</button>
-                                                                    <button type="button" class="btn btn-outline red btn-sm">Reject</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mt-action">
-                                                    <div class="mt-action-img">
-                                                        <img src="/assets/pages/media/users/avatar9.jpg" /> </div>
-                                                    <div class="mt-action-body">
-                                                        <div class="mt-action-row">
-                                                            <div class="mt-action-info ">
-                                                                <div class="mt-action-icon ">
-                                                                    <i class="icon-magnet"></i>
-                                                                </div>
-                                                                <div class="mt-action-details ">
-                                                                    <span class="mt-action-author">Tom Larson</span>
-                                                                    <p class="mt-action-desc">Lorem Ipsum is simply dummy text</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="mt-action-datetime ">
-                                                                <span class="mt-action-date">3 jun</span>
-                                                                <span class="mt-action-dot bg-green"></span>
-                                                                <span class="mt=action-time">9:30-13:00</span>
-                                                            </div>
-                                                            <div class="mt-action-buttons ">
-                                                                <div class="btn-group btn-group-circle">
-                                                                    <button type="button" class="btn btn-outline green btn-sm">Appove</button>
-                                                                    <button type="button" class="btn btn-outline red btn-sm">Reject</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                                
                                             </div>
                                             <!-- END: Actions -->
                                         </div>
@@ -1085,40 +811,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                     <div class="actions">
                                         <div class="btn-group">
-                                            <a class="btn blue-oleo btn-circle btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> More
+                                            <a class="btn blue-oleo btn-circle btn-sm" href="javascript:;" > More
                                                 <i class="fa fa-angle-down"></i>
                                             </a>
-                                            <ul class="dropdown-menu pull-right">
-                                                <li>
-                                                    <a href="javascript:;"> All Project </a>
-                                                </li>
-                                                <li class="divider"> </li>
-                                                <li>
-                                                    <a href="javascript:;"> AirAsia </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:;"> Cruise </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:;"> HSBC </a>
-                                                </li>
-                                                <li class="divider"> </li>
-                                                <li>
-                                                    <a href="javascript:;"> Pending
-                                                        <span class="badge badge-danger"> 4 </span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:;"> Completed
-                                                        <span class="badge badge-success"> 12 </span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:;"> Overdue
-                                                        <span class="badge badge-warning"> 9 </span>
-                                                    </a>
-                                                </li>
-                                            </ul>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -1127,324 +823,38 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <div class="scroller" style="height: 312px;" data-always-visible="1" data-rail-visible1="1">
                                             <!-- START TASK LIST -->
                                             <ul class="task-list">
-                                                <li>
-                                                    <div class="task-checkbox">
-                                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                            <input type="checkbox" class="checkboxes" value="1" />
-                                                            <span></span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="task-title">
-                                                        <span class="task-title-sp"> Present 2013 Year IPO Statistics at Board Meeting </span>
-                                                        <span class="label label-sm label-success">Company</span>
-                                                        <span class="task-bell">
-                                                            <i class="fa fa-bell-o"></i>
-                                                        </span>
-                                                    </div>
-                                                    <div class="task-config">
-                                                        <div class="task-config-btn btn-group">
-                                                            <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                                                <i class="fa fa-cog"></i>
-                                                                <i class="fa fa-angle-down"></i>
-                                                            </a>
-                                                            <ul class="dropdown-menu pull-right">
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-check"></i> Complete </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-pencil"></i> Edit </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-trash-o"></i> Cancel </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="task-checkbox">
-                                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                            <input type="checkbox" class="checkboxes" value="1" />
-                                                            <span></span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="task-title">
-                                                        <span class="task-title-sp"> Hold An Interview for Marketing Manager Position </span>
-                                                        <span class="label label-sm label-danger">Marketing</span>
-                                                    </div>
-                                                    <div class="task-config">
-                                                        <div class="task-config-btn btn-group">
-                                                            <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                                                <i class="fa fa-cog"></i>
-                                                                <i class="fa fa-angle-down"></i>
-                                                            </a>
-                                                            <ul class="dropdown-menu pull-right">
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-check"></i> Complete </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-pencil"></i> Edit </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-trash-o"></i> Cancel </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="task-checkbox">
-                                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                            <input type="checkbox" class="checkboxes" value="1" />
-                                                            <span></span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="task-title">
-                                                        <span class="task-title-sp"> AirAsia Intranet System Project Internal Meeting </span>
-                                                        <span class="label label-sm label-success">AirAsia</span>
-                                                        <span class="task-bell">
-                                                            <i class="fa fa-bell-o"></i>
-                                                        </span>
-                                                    </div>
-                                                    <div class="task-config">
-                                                        <div class="task-config-btn btn-group">
-                                                            <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                                                <i class="fa fa-cog"></i>
-                                                                <i class="fa fa-angle-down"></i>
-                                                            </a>
-                                                            <ul class="dropdown-menu pull-right">
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-check"></i> Complete </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-pencil"></i> Edit </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-trash-o"></i> Cancel </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="task-checkbox">
-                                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                            <input type="checkbox" class="checkboxes" value="1" />
-                                                            <span></span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="task-title">
-                                                        <span class="task-title-sp"> Technical Management Meeting </span>
-                                                        <span class="label label-sm label-warning">Company</span>
-                                                    </div>
-                                                    <div class="task-config">
-                                                        <div class="task-config-btn btn-group">
-                                                            <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                                                <i class="fa fa-cog"></i>
-                                                                <i class="fa fa-angle-down"></i>
-                                                            </a>
-                                                            <ul class="dropdown-menu pull-right">
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-check"></i> Complete </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-pencil"></i> Edit </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-trash-o"></i> Cancel </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="task-checkbox">
-                                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                            <input type="checkbox" class="checkboxes" value="1" />
-                                                            <span></span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="task-title">
-                                                        <span class="task-title-sp"> Kick-off Company CRM Mobile App Development </span>
-                                                        <span class="label label-sm label-info">Internal Products</span>
-                                                    </div>
-                                                    <div class="task-config">
-                                                        <div class="task-config-btn btn-group">
-                                                            <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                                                <i class="fa fa-cog"></i>
-                                                                <i class="fa fa-angle-down"></i>
-                                                            </a>
-                                                            <ul class="dropdown-menu pull-right">
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-check"></i> Complete </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-pencil"></i> Edit </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-trash-o"></i> Cancel </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="task-checkbox">
-                                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                            <input type="checkbox" class="checkboxes" value="1" />
-                                                            <span></span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="task-title">
-                                                        <span class="task-title-sp"> Prepare Commercial Offer For SmartVision Website Rewamp </span>
-                                                        <span class="label label-sm label-danger">SmartVision</span>
-                                                    </div>
-                                                    <div class="task-config">
-                                                        <div class="task-config-btn btn-group">
-                                                            <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                                                <i class="fa fa-cog"></i>
-                                                                <i class="fa fa-angle-down"></i>
-                                                            </a>
-                                                            <ul class="dropdown-menu pull-right">
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-check"></i> Complete </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-pencil"></i> Edit </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-trash-o"></i> Cancel </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="task-checkbox">
-                                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                            <input type="checkbox" class="checkboxes" value="1" />
-                                                            <span></span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="task-title">
-                                                        <span class="task-title-sp"> Sign-Off The Comercial Agreement With AutoSmart </span>
-                                                        <span class="label label-sm label-default">AutoSmart</span>
-                                                        <span class="task-bell">
-                                                            <i class="fa fa-bell-o"></i>
-                                                        </span>
-                                                    </div>
-                                                    <div class="task-config">
-                                                        <div class="task-config-btn btn-group dropup">
-                                                            <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                                                <i class="fa fa-cog"></i>
-                                                                <i class="fa fa-angle-down"></i>
-                                                            </a>
-                                                            <ul class="dropdown-menu pull-right">
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-check"></i> Complete </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-pencil"></i> Edit </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-trash-o"></i> Cancel </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="task-checkbox">
-                                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                            <input type="checkbox" class="checkboxes" value="1" />
-                                                            <span></span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="task-title">
-                                                        <span class="task-title-sp"> Company Staff Meeting </span>
-                                                        <span class="label label-sm label-success">Cruise</span>
-                                                        <span class="task-bell">
-                                                            <i class="fa fa-bell-o"></i>
-                                                        </span>
-                                                    </div>
-                                                    <div class="task-config">
-                                                        <div class="task-config-btn btn-group dropup">
-                                                            <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                                                <i class="fa fa-cog"></i>
-                                                                <i class="fa fa-angle-down"></i>
-                                                            </a>
-                                                            <ul class="dropdown-menu pull-right">
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-check"></i> Complete </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-pencil"></i> Edit </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-trash-o"></i> Cancel </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="last-line">
-                                                    <div class="task-checkbox">
-                                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                            <input type="checkbox" class="checkboxes" value="1" />
-                                                            <span></span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="task-title">
-                                                        <span class="task-title-sp"> KeenThemes Investment Discussion </span>
-                                                        <span class="label label-sm label-warning">KeenThemes </span>
-                                                    </div>
-                                                    <div class="task-config">
-                                                        <div class="task-config-btn btn-group dropup">
-                                                            <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                                                <i class="fa fa-cog"></i>
-                                                                <i class="fa fa-angle-down"></i>
-                                                            </a>
-                                                            <ul class="dropdown-menu pull-right">
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-check"></i> Complete </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-pencil"></i> Edit </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:;">
-                                                                        <i class="fa fa-trash-o"></i> Cancel </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
+                                                @if(isset($tasks))
+                                                    @foreach ($tasks as $item)
+                                                    <li>
+                                                        <div class="task-title">
+                                                                <span class="task-title-sp">{{$item->task}} </span>
+                                                                {{-- <span class="label label-sm label-success">  --}}
+                                                                    @if($item->done)
+                                                                        <span class="badge badge-success">Done </span>
+                                                                    @else
+                                                                        <span class="badge badge-danger"> Pending </span>
+                                                                    @endif
+                                                                 {{-- </span> --}}
+                                                                
+                                                            </div>
+                                                            <div class="task-config">
+                                                                    <div class="task-config-btn btn-group">
+                                                                        <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                                            <i class="fa fa-user"></i>
+                                                                        </a>
+                                                                        <ul class="dropdown-menu pull-right">
+                                                                            <li style="padding:1em">
+                                                                                {{ $item->employee }}
+                                                                            </li>
+                                                                            
+                                                                        </ul>
+                                                                    </div>
+                                                            </div>
+                                                            
+                                                        </li>
+                                                                
+                                                    @endforeach
+                                                @endif
                                             </ul>
                                             <!-- END START TASK LIST -->
                                         </div>
@@ -1688,9 +1098,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
 {{-- MOADL TWO --}}
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTask">
-        Launch demo modal
-      </button>
+
       
       <!-- Modal -->
       <div class="modal fade" id="addTask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1704,15 +1112,17 @@ License: You must have a valid license purchased only from themeforest(the above
             </div>
             <div class="modal-body">
               <!-- Default form register -->
-                <form action="">
+                <form action="{{ route('admin.task.submit') }}" method="POST">
+                    @csrf
                     <div class="form-group">
                         <label for="taskEmp"> <strong>Employee</strong> </label>
                         <select name="employee" id="taskEmp" class="form-control">
-                            <option value="james">Falola James</option>
-                            <option value="james">Falola James</option>
-                            <option value="james">Falola James</option>
-                            <option value="james">Falola James</option>
-                            <option value="james">Falola James</option>
+                            @if(isset($employees))
+                                @foreach ($employees as $item)
+                                    <option value="{{$item->name}}"> {{$item->name}} </option>
+                                    
+                                @endforeach
+                            @endif
                         </select>
                     </div>
 
@@ -1728,7 +1138,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                     <div class="form-group">
                         <label for="dateTime"><strong>Due at</strong></label>
-                        <input type="datetime-local" name="due" id="dateTime" class="form-control datepicker">
+                        <input type="datetime-local" name="dueDate" id="dateTime" class="form-control datepicker">
                     </div>
 
                     <button class="btn btn-primary">

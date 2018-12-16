@@ -24,7 +24,9 @@ Route::get('/', function(){
 
 Route::prefix('admin')->group(function (){
     Route::post('submitNewEmployee','HomeController@addEmployee')->name('employer.employee.submit');
-
+    Route::post('approveLeave/{id}', 'HomeController@approveLeave')->name('leave.accept.{id}');
+    Route::post('addTask','HomeController@makeTask')->name('admin.task.submit');
+    // Route::post('rejectLeave/{id}', 'HomeController@rejectLeave')->name('leave.reject.{id}');
 });
 
 Route::prefix('employee')->group(function() {
