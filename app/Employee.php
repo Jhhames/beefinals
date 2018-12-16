@@ -17,7 +17,7 @@ class Employee extends Authenticatable
         * @var array
         */
     protected $fillable = [
-        'name','email', 'password',
+        'name','email', 'password','salary','position'
     ];
         /**
          * The attributes that should be hidden for arrays.
@@ -29,6 +29,6 @@ class Employee extends Authenticatable
     ];
 
     public function profileComplete(){
-        
+
     }
 }

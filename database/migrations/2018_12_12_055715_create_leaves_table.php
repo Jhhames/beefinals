@@ -16,6 +16,7 @@ class CreateLeavesTable extends Migration
         Schema::create('leaves', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('approved')->default(0);
+            $table->string('duration');
             $table->longText('letter');
             $table->string('approved_by')->nullable();
             $table->string('employee');

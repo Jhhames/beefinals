@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,11 +37,11 @@ class EmployeeController extends Controller
     }
 
     public function getTasks(){
-        $tasks = App\Task::where('employee',$this->employeeEmail)->latest()->get();
+        $tasks = \App\Task::where('employee',$this->employeeEmail)->latest()->get();
     }
 
     public function doTask(Request $request, $taskId){
-        $task = App\Task::where('id',$taskId);
+        $task = \App\Task::where('id',$taskId);
         if($task->exists()){
             $task->update(['done'=>1]);
         }else{
@@ -70,7 +71,7 @@ class EmployeeController extends Controller
             'disabilities' => 'required'
         ]);
 
-        $employee = Employee::where('id',$id);
+        $employee = \App\Employee::where('id',$id);
 
         if($employee->exists()){
             $update = $employee->update([

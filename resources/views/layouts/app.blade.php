@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Nac6ss Prints') }}</title>
+    <title>{{ config('app.name', 'Nacoss Prints') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -18,6 +18,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        body{
+            background-image: url('https://images.pexels.com/photos/1204649/pexels-photo-1204649.jpeg');
+            background-color: rgba(0, 0, 0, 0.7);
+            background-blend-mode: overlay;
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
     <div id="app">

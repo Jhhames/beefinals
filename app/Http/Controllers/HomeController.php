@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use App\User;
 use App\Leave;
+use App\Employee;
 use App\Appraisal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
@@ -28,8 +32,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('employer.index')->with([
+            'employees' => $this->getEmployees(),
+            'admins' => $this->getAdmins(),
+        ]);
     }
+
+
 
     public function makeTask(Request $request){
         $this->validate($request,[
@@ -50,7 +59,7 @@ class HomeController extends Controller
         $task->employer = Auth::user()->name;
         
         if($task->save()){
-            Session::flash('sucess','Task added successfully for'.$request->employee);
+            Session::flash('success','Task added successfully for'.$request->employee);
             return redirect()->back();
         }else{
             Session::flash('error','Some Error occurred, try again');
@@ -82,7 +91,7 @@ class HomeController extends Controller
         $appraisal->report = $request->report;
 
         if($appraisal->save()){
-            Session::flash('success', 'You\'ve successfully Appraised'.$request->employee);
+            Session::flash('success', 'You\'ve Appraised'.$request->employee);
             return  redirect()->back();
         }else{
             Session::flash('error','Some Error occurred, try again');
@@ -110,6 +119,7 @@ class HomeController extends Controller
         $user = Employee::create([
             'email'=> $request->email,
             'name' => $request->name,
+            'salary' => $request->salary,
             'position' => $request->position,
             'password' => Hash::make('default')
         ]);
@@ -149,4 +159,11 @@ class HomeController extends Controller
         return $timeLeft;
     }
 
+    protected function getEmployees(){
+        return Employee::latest()->get();
+    }
+
+    protected function getAdmins(){
+        return User::latest()->get();
+    }
 }

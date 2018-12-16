@@ -21,6 +21,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function(){
     return view('index');
 });
+
+Route::prefix('admin')->group(function (){
+    Route::post('submitNewEmployee','HomeController@addEmployee')->name('employer.employee.submit');
+
+});
+
 Route::prefix('employee')->group(function() {
     Route::get('/login', 'Auth\EmployeeLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\EmployeeLoginController@login')->name('admin.login.submit');
