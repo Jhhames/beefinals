@@ -35,4 +35,7 @@ Route::prefix('employee')->group(function() {
     Route::post('/login', 'Auth\EmployeeLoginController@login')->name('admin.login.submit');
     Route::get('/home', 'EmployeeController@index')->name('admin.home');
     Route::get('/dashboard', 'EmployeeController@index')->name('admin.home');
+    Route::get('/profile-update', 'EmployeeController@updateRedirect')->name('employee.update');
+    Route::post('/update-profile','EmployeeController@updateProfile')->name('employee.update.submit');
+    Route::post('/doTask/{id}','EmployeeController@doTask');
 });
