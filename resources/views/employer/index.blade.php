@@ -228,11 +228,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <span class="caption-subject font-dark bold uppercase">Appraisals </span>
                                     </div>
                                     <ul class="nav nav-tabs">
-                                        <li class="active">
-                                            <a href="#portlet_comments_1" data-toggle="tab"> Pending </a>
-                                        </li>
                                         <li>
-                                            <a href="#portlet_comments_2" data-toggle="tab"> Approved </a>
+                                            <a href="/admin/appraisals" data-toggle="tab"> View All </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -241,31 +238,26 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <div class="tab-pane active" id="portlet_comments_1">
                                             <!-- BEGIN: Comments -->
                                             <div class="mt-comments">
-                                                <div class="mt-comment">
-                                                    <div class="mt-comment-img">
-                                                        <img src="/assets/pages/media/users/avatar1.jpg" /> </div>
-                                                    <div class="mt-comment-body">
-                                                        <div class="mt-comment-info">
-                                                            <span class="mt-comment-author">Michael Baker</span>
-                                                            <span class="mt-comment-date">26 Feb, 10:30AM</span>
-                                                        </div>
-                                                        <div class="mt-comment-text"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. </div>
-                                                        <div class="mt-comment-details">
-                                                            <span class="mt-comment-status mt-comment-status-pending">Pending</span>
-                                                            <ul class="mt-comment-actions">
-                                                                <li>
-                                                                    <a href="#">Quick Edit</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">View</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Delete</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
+
+                                                @if (isset($appraisals))
+                                                    @foreach ($appraisals as $item)
+                                                    <div class="mt-comment">
+                                                            <div class="mt-comment-img">
+                                                                <img src="/assets/pages/media/users/avatar1.jpg" /> </div>
+                                                            <div class="mt-comment-body">
+                                                                <div class="mt-comment-info">
+                                                                    <span class="mt-comment-author"> {{ $item->employee }} </span>
+                                                                    <span class="mt-comment-date"> {{ $item->created_at }} </span>
+                                                                </div>
+                                                                <div class="mt-comment-text">
+                                                                    {{ $item->summary }}
+                                                                </div>
+                                                                
+                                                            </div>
+                                                        </div>        
+                                                    @endforeach
+                                                @endif
+                                                
                                                 <div class="mt-comment">
                                                     <div class="mt-comment-img">
                                                         <img src="/assets/pages/media/users/avatar6.jpg" /> </div>
