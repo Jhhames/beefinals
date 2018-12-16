@@ -27,7 +27,8 @@ Route::prefix('admin')->group(function (){
     Route::post('approveLeave/{id}', 'HomeController@approveLeave')->name('leave.accept.{id}');
     Route::post('addTask','HomeController@makeTask')->name('admin.task.submit');
     Route::post('addAdmin','HomeController@addAdmin')->name('employer.admin.submit');
-    // Route::post('rejectLeave/{id}', 'HomeController@rejectLeave')->name('leave.reject.{id}');
+    Route::get('/employees','HomeController@allEmployees')->name('employer.employee.all');
+   Route::post('/addAppraisal','HomeController@makeAppraisal')->name('admin.appraisal.submit');
 });
 
 Route::prefix('employee')->group(function() {
@@ -39,4 +40,5 @@ Route::prefix('employee')->group(function() {
     Route::post('/update-profile','EmployeeController@updateProfile')->name('employee.update.submit');
     Route::post('/doTask/{id}','EmployeeController@doTask');
     Route::post('/addLeave','EmployeeController@addLeave')->name('employee.leave.submit');
+
 });

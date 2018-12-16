@@ -44,6 +44,11 @@ class HomeController extends Controller
         ]);
     }
 
+    public function allEmployees(){
+        return view('employer.all-employee')->with([
+            'employees' => $this->getEmployees()
+        ]);
+    }
     public function approveLeave(Request $request, $id){
         $leave = Leave::where('id',$id);
         if($leave->exists()){
@@ -92,13 +97,8 @@ class HomeController extends Controller
         return Task::where('done',0)->get();        
     }
 
-    public function makeAppraisal(Request $request,$id){
-        /* 
-        fillables for model Appraisal 
-        employee, report , employee , summary
-        
-        */
-         
+    public function makeAppraisal(Request $request){
+
         $this->validate($request, [
             'employee' => 'required',
             'report' => 'required|max:5000',
@@ -107,12 +107,12 @@ class HomeController extends Controller
 
         $appraisal = new Appraisal;
         $appraisal->employee = $request->employee;
-        $appraisal->employer = Auth::user()->name();
+        $appraisal->employer = Auth::user()->name;
         $appraisal->summary = $request->summary;
         $appraisal->report = $request->report;
 
         if($appraisal->save()){
-            Session::flash('success', 'You\'ve Appraised'.$request->employee);
+            Session::flash('success', 'You\'ve Appraised '.$request->employee);
             return  redirect()->back();
         }else{
             Session::flash('error','Some Error occurred, try again');

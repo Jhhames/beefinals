@@ -227,7 +227,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                     <ul class="nav nav-tabs">
                                         <li>
-                                            <a href="/admin/appraisals" data-toggle="tab"> View All </a>
+                                            <a href="" data-toggle="tab"> View All </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -867,11 +867,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="icon-bubble font-dark hide"></i>
-                                        <span class="caption-subject font-hide bold uppercase"> <span class="icon-users "></span>Company Employees</span>
+                                        <span class="caption-subject font-hide bold uppercase"> <span class="icon-users "></span>New Employees</span>
                                     </div>
                                     <div class="actions">
                                         <div class="btn-group">
-                                            <a class="btn green-haze btn-outline btn-circle btn-sm" href="/admin/employees" data-close-others="true"> View  All <span class="icon-users"></span>
+                                            {{-- <a class="btn green-haze btn-outline btn-circle btn-sm" href="" data-close-others="true"> View  All <span class="icon-users"></span> --}}
 
                                             </a>
                                             

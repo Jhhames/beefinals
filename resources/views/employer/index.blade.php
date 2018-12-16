@@ -96,6 +96,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <li>
                                             <a data-toggle="modal" data-target="#addAdmin"> <span class="icon-wrench"></span> New Admin</a>
                                         </li>
+                                        <li>
+                                            <a data-toggle="modal" data-target="#addAppraisal"> <span class="icon-like"></span> New Appraisal</a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <!-- END GROUP INFORMATION -->
@@ -1190,6 +1193,59 @@ License: You must have a valid license purchased only from themeforest(the above
     
                     <button class="btn btn-primary">
                         Add Admin
+                    </button>
+                </form>
+            <!-- Default form register -->
+            </div>
+            <div class="modal-footer">
+              {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button> --}}
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+ {{-- END OF MODAL 3  --}}
+ {{-- MODAL 3 --}}
+ <div class="modal fade" id="addAppraisal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel" >Appraise Employee </h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Default form register -->
+              <form action="{{ route('admin.appraisal.submit') }}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="taskEmp"> <strong>Employee</strong> </label>
+                        <select name="employee" id="taskEmp" class="form-control">
+                            @if(isset($employees))
+                                @foreach ($employees as $item)
+                                    <option value="{{$item->name}}"> {{$item->name}} </option>
+                                    
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taskTask"><strong>Summary</strong></label>
+                        <input type="text" class="form-control" name="summary" id="taskTask" placeholder="Appraisal Summary">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taskDesc"><strong>Full Report</strong></label>
+                        <textarea name="report" id="taskDesc" class="form-control" cols="30" rows="8" placeholder="Appraisal Report"></textarea>
+                    </div>
+
+                    
+                    <button class="btn btn-primary">
+                        Appraise
                     </button>
                 </form>
             <!-- Default form register -->
