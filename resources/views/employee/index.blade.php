@@ -270,7 +270,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="portlet-title tabbable-line">
                                     <div class="caption">
                                         <i class=" icon-social-twitter font-dark hide"></i>
-                                        <span class="caption-subject font-dark bold uppercase"> Leave Requests </span>
+                                        <span class="caption-subject font-dark bold uppercase">My Leave Requests </span>
                                     </div>
                                     <ul class="nav nav-tabs">
                                         <li >
@@ -336,20 +336,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         <span class="mt-action-dot bg-green"></span>
                                                                         <span class="mt=action-time">{{ $item->duration }}</span>
                                                                     </div>
-                                                                    <div class="mt-action-buttons ">
-                                                                        <form action="{{ url('/admin/approveLeave/'.$item->id) }}" id="approve_form"  method="POST">
-                                                                            @csrf
-                                                                        </form>
-                                                                        
+                                                                    <div class="mt-action-buttons ">    
                                                                         <div class="btn-group btn-group-circle">
-                                                                            <a href="approve" onclick="event.preventDefault();
-                                                                            document.getElementById('approve_form').submit();">
-
-                                                                                <button type="button" class="btn btn-outline green btn-sm">Appove</button>
-                                                                                
-                                                                            </a>
-
-                                                                            
+                                                                            <strong class="text-danger">
+                                                                                    Pending
+                                                                            </strong>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -876,7 +867,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="icon-bubble font-dark hide"></i>
-                                        <span class="caption-subject font-hide bold uppercase"> <span class="icon-users "></span> Employees</span>
+                                        <span class="caption-subject font-hide bold uppercase"> <span class="icon-users "></span>Company Employees</span>
                                     </div>
                                     <div class="actions">
                                         <div class="btn-group">
@@ -936,7 +927,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="icon-bubble font-dark hide"></i>
-                                        <span class="caption-subject font-hide bold uppercase"> <span class="icon-wrench"></span> Admin</span>
+                                        <span class="caption-subject font-hide bold uppercase"> <span class="icon-badge"></span> Appraisals </span>
                                     </div>
                                     <div class="actions">
                                         <div class="btn-group">
@@ -1050,40 +1041,33 @@ License: You must have a valid license purchased only from themeforest(the above
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title" id="exampleModalLabel" >New Employee</h3>
+          <h3 class="modal-title" id="exampleModalLabel" >Request for leave</h3>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <!-- Default form register -->
-        <form action="{{ route('employer.employee.submit') }}" method="POST">
+        <form action="{{ route('employee.leave.submit') }}" method="POST">
             @csrf
                 <div class="form-group">
-                    <label for="empName" class="font-weight-bold"><strong> Full Name </strong></label>
-                    <input type="text" placeholder="Enter New Name" class="form-control" name="name" id="empName">
-                </div>
-                <div class="form-group">
-                    <label for="emailAddresss" class="font-weight-bold"><strong> Email Address </strong></label>
-                    <input type="email" name="email" id="emailAddress" placeholder="Enter Employee Email Address" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="empRole" class="font-weight-bold"><strong> Position </strong></label>
-                    <select name="position" id="empRole" class="form-control">
-                        <option value="Typist1"> Typist1 </option>
-                        <option value="Typist2"> Typist2 </option>
-                        <option value="Technician"> Technician </option>
-                        <option value="Operator1"> Operator1 </option>
-                        <option value="Intern"> Intern </option>
+                    <label for="empRole" class="font-weight-bold"><strong> Duration </strong></label>
+                    <select name="duration" id="empRole" class="form-control">
+                        <option value="2 weeks"> 2 weeks </option>
+                        <option value="1 month"> 1 month </option>
+                        <option value="2 month"> 2 month </option>
+                        <option value="1 month"> 3 month </option>
+                        
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="empSalary"> <strong>Salary (<strike>N</strike>)</strong> </label>
-                    <input type="number" name="salary" id="empSalary" class="form-control" step="10000" value="10000">
+                    <label for="letter"><strong>Leave Request Letter</strong> </label>
+                    <textarea name="letter" id="letter" cols="30" rows="10" class="form-control" placeholder="Request Letter"></textarea>                
+
                 </div>
 
                 <button class="btn btn-primary">
-                    Add Employee
+                    Request Leave
                 </button>
             </form>
         <!-- Default form register -->

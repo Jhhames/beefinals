@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use App\Leave;
 use App\Employee;
+use App\Appraisal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -37,16 +39,15 @@ class EmployeeController extends Controller
             return view('employee.index')->with([
                 'employees' => $this->getEmployees(),
                 'pendingTasks' => $this->getMyPendingTasks(),
+                'appraisals' => $this->getAppraisals(),
                 'tasks' => $this->getMyTasks(),
+                'leaves' => Leave::where('employee', Auth::guard('employee')->user()->name)->get()
             ]);
         }else{
             return redirect()->route('employee.update');
         }
     }
 
-    public function getTasks(){
-        $tasks = \App\Task::where('employee',$this->employeeEmail)->latest()->get();
-    }
 
     public function doTask(Request $request, $id){
         $task = \App\Task::where('id',$id);
@@ -65,13 +66,34 @@ class EmployeeController extends Controller
         if(empty($this->employee->user()->mobile) 
         || empty($this->employee->user()->home_address) 
         || empty($this->employee->user()->bank) 
-        || empty($this->employee->user()->account_number
-        || empty($this->employee->user()->disablities))){
+        || empty($this->employee->user()->account_number)
+        ){
             return false;
         }else{
             return true;
         }
     }
+
+    public function addLeave(Request $request){
+        $this->validate($request,[
+            'duration' => 'required',
+            'letter' => 'required'
+        ]);
+
+        $leave = new Leave;
+        $leave->duration = $request->duration;
+        $leave->letter = $request->letter;
+        $leave->employee = Auth::guard('employee')->user()->name;
+
+        if($leave->save()){
+            Session::flash('success','Leave request submitted');
+            return  redirect()->back();
+        }else{
+            Session::flash('error','Error Occured, try again');
+            return redirect()->back();
+        }
+    }
+
 
     public function updateProfile(Request $request){
         $this->validate($request, [
@@ -125,5 +147,13 @@ class EmployeeController extends Controller
             'employee'=> $this->employee->user()->name,
             'done' =>0
         ])->get();
+    }
+
+    protected function getAppraisals(){
+        return Appraisal::where('employee',$this->employee->user()->name)->get();
+    }
+
+    protected function getLeaves(){
+        return Leave::where('employee',$this->employee->user()->name)->get();
     }
 }
