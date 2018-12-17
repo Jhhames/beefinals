@@ -6,6 +6,7 @@ use App\Task;
 use App\User;
 use DateTime;
 use App\Leave;
+use App\Activity;
 use App\Employee;
 use App\Appraisal;
 use Illuminate\Http\Request;
@@ -20,6 +21,8 @@ class HomeController extends Controller
      *
      * @return void
      */
+
+    
     public function __construct()
     {
         $this->middleware('auth');
@@ -41,6 +44,7 @@ class HomeController extends Controller
             'pending' => $this->getPending(),
             'tasks' => $this->getTasks(),
             'pendingTasks' => $this->getPendingTasks(),
+            'activities' => $this->getActivities()
         ]);
     }
 
@@ -53,6 +57,9 @@ class HomeController extends Controller
         $leave = Leave::where('id',$id);
         if($leave->exists()){
             $leave->update(['approved'=>1]);
+            $activity = new Activity;
+            $notification = Auth::user()->name.' approved leave request for '.$leave->first()->employee;
+            $activity->addActivity('appraisal', $notification);
             Session::flash('success','Leave Approved');
 
             return redirect()->back();
@@ -81,6 +88,9 @@ class HomeController extends Controller
         $task->employer = Auth::user()->name;
         
         if($task->save()){
+            $activity = new Activity;
+            $notification = Auth::user()->name.' added new task for '.$request->employee;
+            $activity->addActivity('task', $notification);
             Session::flash('success','Task added successfully for'.$request->employee);
             return redirect()->back();
         }else{
@@ -112,6 +122,9 @@ class HomeController extends Controller
         $appraisal->report = $request->report;
 
         if($appraisal->save()){
+            $activity = new Activity;
+            $notification = Auth::user()->name.' appraised '.$request->employee;
+            $activity->addActivity('appraisal', $notification);
             Session::flash('success', 'You\'ve Appraised '.$request->employee);
             return  redirect()->back();
         }else{
@@ -150,6 +163,9 @@ class HomeController extends Controller
         ]);
 
         if($user){
+            $activity = new Activity;
+            $notification = Auth::user()->name.' Added new Employee '.$request->name;
+            $activity->addActivity('user', $notification);
             Session::flash('success','New Employee added');
             return redirect()->back();
         }else{
@@ -173,12 +189,32 @@ class HomeController extends Controller
         ]);
 
         if($user){
+            $activity = new Activity;
+            $notification = Auth::user()->name.' added new Admin '.$request->name;
+            $activity->addActivity('user', $notification);
             Session::flash('success','New Admin added');
             return redirect()->back();
         }else{
             Session::flash('error','Some errors occured, try again');
             return redirect()->back();
         }
+    }
+
+    public function getActivities(){
+        $activities = Activity::latest()->get();
+
+        foreach ($activities as $act) {
+            $now = Time();
+
+            $timeleft = $this->getTimeLeft($act->time, $now);
+            $act->timeLeft = $timeleft;
+        }
+
+        return $activities;
+    }
+
+    public function dumpTime(){
+         var_dump($this->getActivities());
     }
 
     public function getTimeLeft($start, $stop){
@@ -199,7 +235,7 @@ class HomeController extends Controller
         }
 
         $timeLeft = [
-            'hour' => $hr,
+            'hour' =>(int)$hr,
             'min' => $min,
             'sec' => $sec
         ];
@@ -214,6 +250,7 @@ class HomeController extends Controller
     protected function getAdmins(){
         return User::latest()->get();
     }
+
 }
 
 

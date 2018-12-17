@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\HomeController;
 
 
 class EmployeeController extends Controller
@@ -22,10 +23,12 @@ class EmployeeController extends Controller
     protected $employeeId;
     protected $employeeEmail;
     protected $employee;
+    protected $homeController;
     public function __construct()
     {
         $this->middleware('auth:employee');
         $this->employee = Auth::guard('employee');
+        $this->homeController = new HomeController;
     }
     /**
      * Show the application dashboard.
@@ -41,7 +44,8 @@ class EmployeeController extends Controller
                 'pendingTasks' => $this->getMyPendingTasks(),
                 'appraisals' => $this->getAppraisals(),
                 'tasks' => $this->getMyTasks(),
-                'leaves' => Leave::where('employee', Auth::guard('employee')->user()->name)->get()
+                'leaves' => Leave::where('employee', $this->employee->user()->name)->get(),
+                'activities' => $this->homeController->getActivities()
             ]);
         }else{
             return redirect()->route('employee.update');
@@ -53,6 +57,9 @@ class EmployeeController extends Controller
         $task = \App\Task::where('id',$id);
         if($task->exists()){
             if($task->update(['done'=>1])){
+                $activity = new Activity;
+                $notification = $this->employee->user()->name.' completed a task';
+                $activity->addActivity('done', $notification);
                 Session::flash('success','Task marked as done');
                 return redirect()->back();
             }
@@ -70,6 +77,7 @@ class EmployeeController extends Controller
         ){
             return false;
         }else{
+
             return true;
         }
     }
@@ -86,6 +94,9 @@ class EmployeeController extends Controller
         $leave->employee = Auth::guard('employee')->user()->name;
 
         if($leave->save()){
+            $activity = new Activity;
+            $notification = Auth::guard('employee')->user()->name.' requested for a leave';
+            $activity->addActivity('leave', $notification);
             Session::flash('success','Leave request submitted');
             return  redirect()->back();
         }else{
