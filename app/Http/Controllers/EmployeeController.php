@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use App\Leave;
+use App\Activity;
 use App\Employee;
 use App\Appraisal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -52,15 +54,18 @@ class EmployeeController extends Controller
         }
     }
 
-
+    
     public function doTask(Request $request, $id){
-        $task = \App\Task::where('id',$id);
+        $task = Task::where('id',$id);
         if($task->exists()){
-            if($task->update(['done'=>1])){
+            $update = $task->update(['done'=>1]);
+            if($update){
                 $activity = new Activity;
                 $notification = $this->employee->user()->name.' completed a task';
                 $activity->addActivity('done', $notification);
                 Session::flash('success','Task marked as done');
+                return redirect()->back();
+            }else{
                 return redirect()->back();
             }
         }else{

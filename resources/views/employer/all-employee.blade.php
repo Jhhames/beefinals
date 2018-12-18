@@ -99,7 +99,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- BEGIN USER PROFILE -->
                                 <div class="btn-group-img btn-group">
                                     <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                        <span>{{ Auth::guard('employee')->user()->name }} </span>
+                                        <span>{{ Auth::user()->name }} </span>
                                         <img src="/assets/layouts/layout5/img/avatar1.jpg" alt=""> </button>
                                     <ul class="dropdown-menu-v2" role="menu">
                                         

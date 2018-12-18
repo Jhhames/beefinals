@@ -21,7 +21,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <head>
         <meta charset="utf-8" />
-        <title>Nacoss Prints Dashboard</title>
+        <title>ESM Dashboard</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #5 for statistics, charts, recent events and reports" name="description" />
@@ -71,7 +71,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <a id="index" class="page-logo" href="">
                                 {{-- <img src="" alt="Logo">  --}}
                                 <span style="font-family: 'Anton', sans-serif; font-size: 40px">
-                                NACOSS<span style="color:white !important">PRINTS</span>
+                                EM<span style="color:white !important">S</span>
 
                                 </span> 
                                 
@@ -759,7 +759,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                 {{ $item->employer }}
                                                                             </li>
                                                                             <li>
-                                                                                <a href="do" onclick="event.preventDefault();
+                                                                            <a href="do/{{$item->id}}" onclick="event.preventDefault();
                                                                                 document.getElementById('do_task').submit();">
                                                                                 <i class="icon-check"></i>
                                                                                     Mark As done 

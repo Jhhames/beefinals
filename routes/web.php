@@ -42,3 +42,8 @@ Route::prefix('employee')->group(function() {
     Route::post('/addLeave','EmployeeController@addLeave')->name('employee.leave.submit');
 
 });
+
+
+// Route::get('/employee-login', function(){
+//     return view('auth.employee-login');
+// });
