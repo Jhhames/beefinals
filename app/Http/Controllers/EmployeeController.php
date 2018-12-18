@@ -75,13 +75,13 @@ class EmployeeController extends Controller
     // }
 
     public function doTask(Request $request, $id){
-        $task = Task::find($id);
-        $task->done = 1;
-        if($task->save()){
-            // if($task->update(['task'=>'jnnjs'])){
+        $task = Task::where('id',$id);
+
+        if($task->exists()){
+            if($task->update(['done'=>1])){
                 Session::flash('success','Task marked as done');
                 return redirect()->back();
-            // }
+            }
         }else{
             Session::flash('error','Task Doesn\'t exist');
             

@@ -763,11 +763,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                             </li>
                                                                             <li>
                                                                             <a href="do/{{$item->id}}" onclick="event.preventDefault();
-                                                                                document.getElementById('do_task').submit();">
+                                                                                document.getElementById('do_task{{$item->id}}').submit();">
                                                                                 <i class="icon-check"></i>
                                                                                     Mark As done 
                                                                                 </a>
-                                                                                <form action="{{ url('/employee/doTask/'.$item->id) }}" method="POST" id="do_task">
+                                                                            <form action="{{ url('/employee/doTask/'.$item->id ) }}" method="POST" id="do_task{{$item->id}}">
                                                                                     @csrf
                                                                                 </form>
                                                                             </li>
