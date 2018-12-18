@@ -79,6 +79,9 @@ class EmployeeController extends Controller
 
         if($task->exists()){
             if($task->update(['done'=>1])){
+                $activity = new Activity;
+                $notification = $this->employee->user()->name.' completed a task';
+                $activity->addActivity('done', $notification);
                 Session::flash('success','Task marked as done');
                 return redirect()->back();
             }
