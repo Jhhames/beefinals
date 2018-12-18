@@ -109,7 +109,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <i class="icon-key"></i> Log Out 
                                             </a>
 
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"  style="display: none;">
                                                 @csrf
                                             </form>
                                         </li>
