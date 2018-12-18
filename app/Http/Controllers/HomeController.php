@@ -146,6 +146,19 @@ class HomeController extends Controller
         return Leave::latest()->get();
     }
 
+    public function updatePassword(Request $request){
+        $this->validate($request, [
+            'password' => 'required|confirmed'
+        ]);
+
+        $password = Hash::make($request->password);
+
+        $user = User::where('id', Auth::user()->id);
+        if($user->update(['password'=>$password])){
+            Session::flash('success','Password updated');
+            return redirect()->back();
+        }
+    }
     public function addEmployee(Request $request){
         $this->validate($request,[
             'email' => 'required',

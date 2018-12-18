@@ -29,6 +29,7 @@ Route::prefix('admin')->group(function (){
     Route::post('addAdmin','HomeController@addAdmin')->name('employer.admin.submit');
     Route::get('/employees','HomeController@allEmployees')->name('employer.employee.all');
    Route::post('/addAppraisal','HomeController@makeAppraisal')->name('admin.appraisal.submit');
+   Route::post('/changePassword', 'HomeController@updatePassword')->name('employer.password.submit');
 });
 
 Route::prefix('employee')->group(function() {
@@ -38,7 +39,7 @@ Route::prefix('employee')->group(function() {
     Route::get('/dashboard', 'EmployeeController@index')->name('admin.home');
     Route::get('/profile-update', 'EmployeeController@updateRedirect')->name('employee.update');
     Route::post('/update-profile','EmployeeController@updateProfile')->name('employee.update.submit');
-    Route::post('/doTask/{id}','EmployeeController@doTask');
+    Route::post('/doTask/{id}','EmployeeController@doTask')->name('employee.task.done');
     Route::post('/addLeave','EmployeeController@addLeave')->name('employee.leave.submit');
 
 });

@@ -98,6 +98,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <li>
                                             <a data-toggle="modal" data-target="#addAppraisal"> <span class="icon-like"></span> New Appraisal</a>
                                         </li>
+                                        <li>
+                                            <a data-toggle="modal" data-target="#addPassword"> <span class="icon-key"></span> Change Password </a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <!-- END GROUP INFORMATION -->
@@ -1023,6 +1026,47 @@ License: You must have a valid license purchased only from themeforest(the above
       </div>
     </div>
   </div>
+
+
+  {{-- PASSWORD CHANGE MODAL --}}
+
+  <div class="modal fade" id="addPassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel" >Change Password</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Default form register -->
+            <form action="{{ route('employer.password.submit') }}" method="POST">
+                @csrf
+                    <div class="form-group">
+                        <label for="empName" class="font-weight-bold"><strong> Enter new password </strong></label>
+                        <input type="password" placeholder="Enter New Password" class="form-control" name="password" id="empName">
+                    </div>
+                    <div class="form-group">
+                        <label for="emailAddresss" class="font-weight-bold"><strong> Confirm Password </strong></label>
+                        <input type="password" name="password_confirmation" id="emailAddress" placeholder="Retype password to comfirm" class="form-control">
+                    </div>
+                    
+                    <button class="btn btn-primary">
+                        Change Password
+                    </button>
+                </form>
+            <!-- Default form register -->
+            </div>
+            <div class="modal-footer">
+              {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button> --}}
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
 
 
 {{-- MOADL TWO --}}

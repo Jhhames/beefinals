@@ -90,6 +90,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <li class="active">
                                             <a data-toggle="modal" data-target="#addEmployee"> <span class="icon-plane"></span> New Leave Request </a>
                                         </li>
+                                        <li>
+                                        <a data-toggle="modal" href="{{ route('employee.update') }}"> <span class="icon-user"></span> Update Profile </a>
+                                        </li>
                                         
                                     </ul>
                                 </div>

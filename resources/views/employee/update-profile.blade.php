@@ -71,8 +71,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <a id="index" class="page-logo" href="">
                                 {{-- <img src="" alt="Logo">  --}}
                                 <span style="font-family: 'Anton', sans-serif; font-size: 40px">
-                                NACOSS<span style="color:white !important">PRINTS</span>
-
+                                        EM<span style="color:white !important">S</span>
                                 </span> 
                                 
                             </a>
@@ -151,7 +150,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <h1>Employee Dashboard</h1>
                         <ol class="breadcrumb">
                             <li>
-                                <a href="#">Home</a>
+                                <a href="/employee/dashboard">Home</a>
                             </li>
                             <li class="active">Update Profile</li>
                         </ol>
