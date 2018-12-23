@@ -20,8 +20,9 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- BEGIN HEAD -->
 
     <head>
+
         <meta charset="utf-8" />
-        <title>EMS Admin Login </title>
+        <title>ESM Admin Login </title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #5 for " name="description" />
@@ -31,6 +32,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <link href="/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <link href="/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
         <link href="/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
         <link href="/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -42,114 +44,109 @@ License: You must have a valid license purchased only from themeforest(the above
         <link href="/assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN PAGE LEVEL STYLES -->
-        <link href="/assets/pages/css/login-5.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/pages/css/login.min.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
         <!-- END THEME LAYOUT STYLES -->
+        
         <link rel="shortcut icon" href="favicon.ico" /> 
         <style>
-                .invalid-feedback{
-                    color : red !important;
-                }
-    
-                .is-invalid{
-                    border-color:red !important;
-                }
-            </style>
+            .invalid-feedback{
+                color : red !important;
+            }
+
+            .is-invalid{
+                border-color:red !important;
+            }
+        </style>
     </head>
     <!-- END HEAD -->
 
     <body class=" login">
-        <!-- BEGIN : LOGIN PAGE 5-2 -->
-        <div class="user-login-5">
-            <div class="row bs-reset">
-                <div class="col-md-6 login-container bs-reset">
+        <!-- BEGIN LOGO -->
+        <div class="logo">
+            {{-- <span class="fa fa-user" style="font-size: 40px; color: white !important">
                     
-                    {{-- <span class="lead bold"> EMS </span> --}}
-                    <div class="login-content">
-                        <h1>
-                                <span class="fa fa-user-secret" style="font-size: 40px; ">
-                            EMS Admin Login</h1>
-                        {{-- <p> Lorem ipsum dolor sit amet, coectetuer adipiscing elit sed diam nonummy et nibh euismod aliquam erat volutpat. Lorem ipsum dolor sit amet, coectetuer adipiscing. </p> --}}
-                        <form method="POST" action="{{ route('login') }}" class="login-form">
-                            
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <input id="email" type="email" class="form-control form-control placeholder-no-fix{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required placeholder="Email"/>
-                                    @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                                </div>
-                                <div class="col-xs-6">
-                                    <input class="form-control form-control-solid placeholder-no-fix form-group" type="password" autocomplete="off" placeholder="Password" name="password" required/> </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <label class="rememberme mt-checkbox mt-checkbox-outline">
-                                        <input type="checkbox" name="remember" value="1" 
-                                        type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}
-                                        /> Remember me
-                                        <span></span>
-                                    </label>
-                                </div>
-                                <div class="col-sm-8 text-right">
-                                    <div class="forgot-password">
-                                        {{-- <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a> --}}
-                                    </div>
-                                    <button class="btn blue" type="submit">Sign In</button>
-                                </div>
-                            </div>
-                        </form>
-                        <!-- BEGIN FORGOT PASSWORD FORM -->
-                        <form class="forget-form" action="javascript:;" method="post">
-                            <h3>Forgot Password ?</h3>
-                            <p> Enter your e-mail address below to reset your password. </p>
-                            <div class="form-group">
-                                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" /> </div>
-                            <div class="form-actions">
-                                <button type="button" id="back-btn" class="btn blue btn-outline">Back</button>
-                                <button type="submit" class="btn blue uppercase pull-right">Submit</button>
-                            </div>
-                        </form>
-                        <!-- END FORGOT PASSWORD FORM -->
-                    </div>
-                    <div class="login-footer">
-                        <div class="row bs-reset">
-                            <div class="col-xs-5 bs-reset">
-                                <ul class="login-social">
-                                    <li>
-                                        <a href="javascript:;">
-                                            <i class="icon-social-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <i class="icon-social-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <i class="icon-social-dribbble"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-xs-7 bs-reset">
-                                <div class="login-copyright text-right">
-                                    <p>Copyright &copy; Keenthemes 2015</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 bs-reset">
-                    <div class="login-bg"> </div>
-                </div>
-            </div>
+                </span>
+                <span class="lead" style="color:bisque !important">
+                    Employee Login
+                    
+                </span> --}}
+            
         </div>
-        <!-- END : LOGIN PAGE 5-2 -->
+        <!-- END LOGO -->
+        <!-- BEGIN LOGIN -->
+        <div class="content">
+            <!-- BEGIN LOGIN FORM -->
+            <form class="loginform" method="POST" action="{{ route('admin.login.submit') }}">
+                @csrf
+                <h3 class="form-title font-green">
+                        <span class="fa fa-user-secret" style="font-size: 40px; ">
+                        </span>
+                    Admin Login</h3>
+                {{-- <div class="alert alert-danger display-hide">
+                    <button class="close" data-close="alert"></button>
+                    <span> Enter any username and password. </span>
+                </div> --}}
+                <div class="form-group">
+                    <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                    <label class="control-label visible-ie8 visible-ie9">Email </label>
+                    <input id="email" type="email" class="form-control form-control-solid placeholder-no-fix {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus placeholder="Enter employee email"/>
+                    @if ($errors->has('email'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
+                
+                </div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">Password</label>
+                    <input id="password" type="password" class="form-control form-control form-control-solid placeholder-no-fix {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required
+                    placeholder="password"
+                    /> 
+                    @if ($errors->has('password'))
+                        <span class="invalid-feedback" role="alert" style="color:red !important">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn green uppercase">Login</button>
+                    <label class="rememberme check mt-checkbox mt-checkbox-outline">
+                        <input type="checkbox" name="remember" value="1" id="remember" {{ old('remember') ? 'checked' : '' }}/>Remember
+                        <span></span>
+                    </label>
+                    {{-- <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a> --}}
+                </div>
+                {{-- <div class="login-options">
+                    <h4>Or login with</h4>
+                    <ul class="social-icons">
+                        <li>
+                            <a class="social-icon-color facebook" data-original-title="facebook" href="javascript:;"></a>
+                        </li>
+                        <li>
+                            <a class="social-icon-color twitter" data-original-title="Twitter" href="javascript:;"></a>
+                        </li>
+                        <li>
+                            <a class="social-icon-color googleplus" data-original-title="Goole Plus" href="javascript:;"></a>
+                        </li>
+                        <li>
+                            <a class="social-icon-color linkedin" data-original-title="Linkedin" href="javascript:;"></a>
+                        </li>
+                    </ul>
+                </div> --}}
+                {{-- <div class="create-account">
+                    <p>
+                        <a href="javascript:;" id="register-btn" class="uppercase">Create an account</a>
+                    </p>
+                </div> --}}
+            </form>
+            <!-- END LOGIN FORM -->
+            <!-- BEGIN FORGOT PASSWORD FORM -->
+            
+            <!-- END REGISTRATION FORM -->
+        </div>
+        <div class="copyright"> 2018 © Employee Management System. </div>
         <!--[if lt IE 9]>
 <script src="/assets/global/plugins/respond.min.js"></script>
 <script src="/assets/global/plugins/excanvas.min.js"></script> 
@@ -167,27 +164,12 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
         <script src="/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
         <script src="/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
-        <script src="/assets/global/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
         <script src="/assets/global/scripts/app.min.js" type="text/javascript"></script>
         <!-- END THEME GLOBAL SCRIPTS -->
         <!-- BEGIN PAGE LEVEL SCRIPTS -->
-        {{-- <script src="/assets/pages/scripts/login-5.min.js" type="text/javascript"></script> --}}
-        <script>
-          $('.login-bg').backstretch([
-                "../assets/pages/img/login/bg1.jpg",
-                "../assets/pages/img/login/bg2.jpg",
-                "../assets/pages/img/login/bg3.jpg"
-                ], {
-                  fade: 1000,
-                  duration: 8000
-                }
-            );
-
-            $('.forget-form').hide();
-
-        </script>
+        <script src="/assets/pages/scripts/login.min.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL SCRIPTS -->
         <!-- BEGIN THEME LAYOUT SCRIPTS -->
         <!-- END THEME LAYOUT SCRIPTS -->
