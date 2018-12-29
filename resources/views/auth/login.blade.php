@@ -22,7 +22,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <head>
 
         <meta charset="utf-8" />
-        <title>ESM Admin Login </title>
+        <title>EMS Admin Login </title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #5 for " name="description" />
@@ -78,7 +78,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- BEGIN LOGIN -->
         <div class="content">
             <!-- BEGIN LOGIN FORM -->
-            <form class="loginform" method="POST" action="{{ route('admin.login.submit') }}">
+            <form class="loginform" method="POST" action="{{ route('login') }}">
                 @csrf
                 <h3 class="form-title font-green">
                         <span class="fa fa-user-secret" style="font-size: 40px; ">
@@ -91,7 +91,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="form-group">
                     <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                     <label class="control-label visible-ie8 visible-ie9">Email </label>
-                    <input id="email" type="email" class="form-control form-control-solid placeholder-no-fix {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus placeholder="Enter employee email"/>
+                    <input id="email" type="email" class="form-control form-control-solid placeholder-no-fix {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus placeholder="Enter Admin email"/>
                     @if ($errors->has('email'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('email') }}</strong>

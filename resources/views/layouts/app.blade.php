@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Nacoss Prints') }}</title>
+    <title>{{ config('app.name', 'EMS') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -20,10 +20,46 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         body{
-            background-image: url('https://images.pexels.com/photos/1204649/pexels-photo-1204649.jpeg');
+            background-image: url('/img/background.jpeg');
             background-color: rgba(0, 0, 0, 0.7);
             background-blend-mode: overlay;
             background-size: cover;
+        }
+
+        .admin-div{
+            background-color: rgba(0, 0, 0, 0.4);
+            box-sizing: border-box
+        }
+
+        .admin-div:hover{
+            border-color: black;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: whitesmoke;
+            transition: all 1s;
+        }
+
+        .row{
+            margin: 0% !important;
+        }
+
+        
+        .employee-div{
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .employee-div:hover{
+            border-color: black;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: whitesmoke;
+            transition: all 1s;
+        }
+        
+        .card-body{
+            padding: 0px !important;
+        }
+
+        .col-md-6{
+            padding: 10px !important;
         }
     </style>
 </head>

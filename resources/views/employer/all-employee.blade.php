@@ -23,7 +23,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <head>
         <meta charset="utf-8" />
-        <title>Nacoss Prints Dashboard</title>
+        <title>EMS Dashboard</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #5 for statistics, charts, recent events and reports" name="description" />
@@ -99,7 +99,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="btn-group-img btn-group">
                                     <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                         <span>{{ Auth::user()->name }} </span>
-                                        <img src="/assets/layouts/layout5/img/avatar1.jpg" alt=""> </button>
+                                        <img src="/img/user.png" alt=""> </button>
                                     <ul class="dropdown-menu-v2" role="menu">
                                         
                                         <li>
@@ -176,7 +176,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                                             <div class="mt-card-item">
                                                 <div class="mt-card-avatar mt-overlay-1">
-                                                    <img src="../assets/pages/img/avatars/team5.jpg" />
+                                                    <img src="/img/user2.png" />
                                                     <div class="mt-overlay">
                                                         <ul class="mt-info">
                                                             <li>

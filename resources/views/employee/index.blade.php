@@ -21,7 +21,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <head>
         <meta charset="utf-8" />
-        <title>ESM Dashboard</title>
+        <title>EMS Dashboard</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #5 for statistics, charts, recent events and reports" name="description" />
@@ -101,7 +101,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="btn-group-img btn-group">
                                     <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                         <span>{{ Auth::guard('employee')->user()->name }} </span>
-                                        <img src="/assets/layouts/layout5/img/avatar1.jpg" alt=""> </button>
+                                        <img src="/img/user.png" alt=""> </button>
                                     <ul class="dropdown-menu-v2" role="menu">
                                         
                                         <li>
@@ -244,7 +244,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     @foreach ($appraisals as $item)
                                                     <div class="mt-comment">
                                                             <div class="mt-comment-img">
-                                                                <img src="/assets/pages/media/users/avatar1.jpg" /> </div>
+                                                                <img src="/img/user.png" /> </div>
                                                             <div class="mt-comment-body">
                                                                 <div class="mt-comment-info">
                                                                     <span class="mt-comment-author"> {{ $item->employee }} </span>
@@ -292,7 +292,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     @if($item->approved)
                                                     <div class="mt-action">
                                                             <div class="mt-action-img">
-                                                                <img src="/assets/pages/media/users/avatar10.jpg" /> </div>
+                                                                <img src="/img/user.png" /> </div>
                                                             <div class="mt-action-body">
                                                                 <div class="mt-action-row">
                                                                     <div class="mt-action-info ">
@@ -830,7 +830,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                 </a>
                                                             </div>
                                                             <div class="mt-img">
-                                                                <img src="/assets/pages/media/users/avatar80_8.jpg"> </div>
+                                                                <img src="/img/user.png"> </div>
                                                             <div class="mt-body">
                                                                 <h3 class="mt-username"> {{ $employee->name }} </h3>
                                                                 <p class="mt-user-title"> {{ $employee->position }} </p>
@@ -888,7 +888,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             </a>
                                                         </div>
                                                         <div class="mt-img">
-                                                            <img src="/assets/pages/media/users/avatar80_5.jpg"> </div>
+                                                            <img src="/img/user.png"> </div>
                                                         <div class="mt-body">
                                                             <h3 class="mt-username"> {{ $admin->name }} </h3>
                                                             <p class="mt-user-title"> {{ $admin->position }} </p>
@@ -913,9 +913,8 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- END PAGE BASE CONTENT -->
                 </div>
                 <!-- BEGIN FOOTER -->
-                <p class="copyright"> 2016 &copy; Metronic Theme By
-                    <a target="_blank" href="http://keenthemes.com">Keenthemes</a> &nbsp;|&nbsp;
-                    <a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" title="Purchase Metronic just for 27$ and get lifetime updates for free" target="_blank">Purchase Metronic!</a>
+                <p class="copyright"> 2018 &copy; Employee Management System
+                    
                 </p>
                 <a href="#index" class="go2top">
                     <i class="icon-arrow-up"></i>
