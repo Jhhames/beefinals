@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-md-6 employee-div">
                         <h1 class="text-center">
-                            Employee <img src="img/user.png" alt="">
+                            Employee <img src="img/icon.png" alt="">
                             
                         </h1>
                         {{-- <p>
