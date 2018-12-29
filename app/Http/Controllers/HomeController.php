@@ -233,7 +233,7 @@ class HomeController extends Controller
     public function getTimeLeft($start, $stop){
         $timeStampLeft = $stop - $start;
 
-        $min = $sec = $hr = 0;
+        $wk = $day = $min = $sec = $hr = 0;
 
         if($timeStampLeft >= 60){
             $min = floor($timeStampLeft / 60);
@@ -242,15 +242,29 @@ class HomeController extends Controller
             if($min >= 60 ){
                 $hr = floor($min / 60);
                 $min = $min % 60;
+
+                if($hr >= 24 ){
+                    $day = floor($hr / 24);
+                    $hr = $hr % 24;
+
+                    if($day >= 7){
+                        $wk = floor($day / 7);
+                        $day = $day % 7;
+                    }
+                }
+
             }
         }else{
             $sec = $timeStampLeft;
         }
 
         $timeLeft = [
+            'week' => (int)$wk,
+            'day' => (int)$day,
             'hour' =>(int)$hr,
             'min' => $min,
-            'sec' => $sec
+            'sec' => $sec,
+            'stamp' => $timeStampLeft
         ];
 
         return $timeLeft;

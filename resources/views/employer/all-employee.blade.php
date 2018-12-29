@@ -231,29 +231,25 @@ License: You must have a valid license purchased only from themeforest(the above
             </a>
             <ul>
                 <li>
-                    <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" target="_blank" class="active">
-                        <span>Purchase Metronic</span>
-                        <i class="icon-basket"></i>
+                    <a href="/home" class="active">
+                        <span>Home</span>
+                        <i class="icon-home"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/reviews/4021469?ref=keenthemes" target="_blank">
-                        <span>Customer Reviews</span>
+                    <a href="">
+                        <span>All Employees</span>
                         <i class="icon-users"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="http://keenthemes.com/showcast/" target="_blank">
-                        <span>Showcase</span>
-                        <i class="icon-user"></i>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        <span>Logout</span>
+                        <i class="icon-logout"></i>
                     </a>
                 </li>
-                <li>
-                    <a href="http://keenthemes.com/metronic-theme/changelog/" target="_blank">
-                        <span>Changelog</span>
-                        <i class="icon-graph"></i>
-                    </a>
-                </li>
+                
             </ul>
             <span aria-hidden="true" class="quick-nav-bg"></span>
         </nav>

@@ -487,35 +487,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <i class="icon-share font-dark hide"></i>
                                         <span class="caption-subject font-dark bold uppercase">Recent Activities</span>
                                     </div>
-                                    <div class="actions">
-                                        <div class="btn-group">
-                                            <a class="btn btn-sm blue btn-outline btn-circle" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> Filter By
-                                                <i class="fa fa-angle-down"></i>
-                                            </a>
-                                            <div class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
-                                                <label class="mt-checkbox mt-checkbox-outline">
-                                                    <input type="checkbox" /> Finance
-                                                    <span></span>
-                                                </label>
-                                                <label class="mt-checkbox mt-checkbox-outline">
-                                                    <input type="checkbox" checked="" /> Membership
-                                                    <span></span>
-                                                </label>
-                                                <label class="mt-checkbox mt-checkbox-outline">
-                                                    <input type="checkbox" /> Customer Support
-                                                    <span></span>
-                                                </label>
-                                                <label class="mt-checkbox mt-checkbox-outline">
-                                                    <input type="checkbox" checked="" /> HR
-                                                    <span></span>
-                                                </label>
-                                                <label class="mt-checkbox mt-checkbox-outline">
-                                                    <input type="checkbox" /> System
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                                 <div class="portlet-body">
                                     <div class="scroller" style="height: 300px;" data-always-visible="1" data-rail-visible="0">
@@ -541,13 +513,21 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     </div>
                                                                     <div class="col2">
                                                                         <div class="date">
-                                                                            @if($item->timeLeft['hour'] != 0 )
-                                                                                    {{ $item->timeLeft['hour'] }} hours
-                                                                            @else
-                                                                                @if($item->timeLeft['min'] != 0 )
-                                                                                    {{ $item->timeLeft['min'] }} minutes
+                                                                                @if($item->timeLeft['week'] != 0 )
+                                                                                {{ $item->timeLeft['week'] }} weeks
+                                                                            
+                                                                                @if($item->timeLeft['day'] != 0)
+                                                                                    {{ $item->timeLeft['day'] }} days
                                                                                 @else
-                                                                                    just now
+                                                                                    @if($item->timeLeft['hour'] != 0 )
+                                                                                            {{ $item->timeLeft['hour'] }} hours
+                                                                                    @else
+                                                                                        @if($item->timeLeft['min'] != 0 )
+                                                                                            {{ $item->timeLeft['min'] }} minutes
+                                                                                        @else
+                                                                                            just now
+                                                                                        @endif
+                                                                                    @endif
                                                                                 @endif
                                                                             @endif
                                                                             </div>
@@ -572,16 +552,23 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         </div>
                                                                         <div class="col2">
                                                                             <div class="date">
-                                                                                    @if($item->timeLeft['hour'] != 0 )
-                                                                                        {{ $item->timeLeft['hour'] }} hours
+                                                                                    @if($item->timeLeft['week'] != 0 )
+                                                                                    {{ $item->timeLeft['week'] }} weeks
+                                                                                
+                                                                                    @if($item->timeLeft['day'] != 0)
+                                                                                        {{ $item->timeLeft['day'] }} days
                                                                                     @else
-                                                                                        @if($item->timeLeft['min'] != 0 )
-                                                                                            {{ $item->timeLeft['min'] }} minutes
+                                                                                        @if($item->timeLeft['hour'] != 0 )
+                                                                                                {{ $item->timeLeft['hour'] }} hours
                                                                                         @else
-                                                                                            just now
+                                                                                            @if($item->timeLeft['min'] != 0 )
+                                                                                                {{ $item->timeLeft['min'] }} minutes
+                                                                                            @else
+                                                                                                just now
+                                                                                            @endif
                                                                                         @endif
                                                                                     @endif
-                                                                                
+                                                                                @endif
                                                                             </div>
                                                                         </div>
                                                                     </li>
@@ -604,15 +591,23 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         </div>
                                                                         <div class="col2">
                                                                             <div class="date">
-                                                                                    @if($item->timeLeft['hour'] != 0 )
-                                                                                    {{ $item->timeLeft['hour'] }} hours
+                                                                                    @if($item->timeLeft['week'] != 0 )
+                                                                                    {{ $item->timeLeft['week'] }} weeks
+                                                                                
+                                                                                    @if($item->timeLeft['day'] != 0)
+                                                                                        {{ $item->timeLeft['day'] }} days
                                                                                     @else
-                                                                                        @if($item->timeLeft['min'] != 0 )
-                                                                                            {{ $item->timeLeft['min'] }} minutes
+                                                                                        @if($item->timeLeft['hour'] != 0 )
+                                                                                                {{ $item->timeLeft['hour'] }} hours
                                                                                         @else
-                                                                                            just now
+                                                                                            @if($item->timeLeft['min'] != 0 )
+                                                                                                {{ $item->timeLeft['min'] }} minutes
+                                                                                            @else
+                                                                                                just now
+                                                                                            @endif
                                                                                         @endif
                                                                                     @endif
+                                                                                @endif
                                                                             </div>
                                                                         </div>
                                                                     </li>
@@ -635,15 +630,23 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         </div>
                                                                         <div class="col2">
                                                                             <div class="date">
-                                                                                    @if($item->timeLeft['hour'] != 0 )
-                                                                                        {{ $item->timeLeft['hour'] }} hours
+                                                                                    @if($item->timeLeft['week'] != 0 )
+                                                                                    {{ $item->timeLeft['week'] }} weeks
+                                                                                
+                                                                                    @if($item->timeLeft['day'] != 0)
+                                                                                        {{ $item->timeLeft['day'] }} days
                                                                                     @else
-                                                                                        @if($item->timeLeft['min'] != 0 )
-                                                                                            {{ $item->timeLeft['min'] }} minutes
+                                                                                        @if($item->timeLeft['hour'] != 0 )
+                                                                                                {{ $item->timeLeft['hour'] }} hours
                                                                                         @else
-                                                                                            just now
+                                                                                            @if($item->timeLeft['min'] != 0 )
+                                                                                                {{ $item->timeLeft['min'] }} minutes
+                                                                                            @else
+                                                                                                just now
+                                                                                            @endif
                                                                                         @endif
                                                                                     @endif
+                                                                                @endif
                                                                             </div>
                                                                         </div>
                                                                     </li>
@@ -666,15 +669,23 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         </div>
                                                                         <div class="col2">
                                                                             <div class="date">
-                                                                                    @if($item->timeLeft['hour'] != 0 )
-                                                                                        {{ $item->timeLeft['hour'] }} hours
+                                                                                @if($item->timeLeft['week'] != 0 )
+                                                                                    {{ $item->timeLeft['week'] }} weeks
+                                                                                
+                                                                                    @if($item->timeLeft['day'] != 0)
+                                                                                        {{ $item->timeLeft['day'] }} days
                                                                                     @else
-                                                                                        @if($item->timeLeft['min'] != 0 )
-                                                                                            {{ $item->timeLeft['min'] }} minutes
+                                                                                        @if($item->timeLeft['hour'] != 0 )
+                                                                                                {{ $item->timeLeft['hour'] }} hours
                                                                                         @else
-                                                                                            just now
+                                                                                            @if($item->timeLeft['min'] != 0 )
+                                                                                                {{ $item->timeLeft['min'] }} minutes
+                                                                                            @else
+                                                                                                just now
+                                                                                            @endif
                                                                                         @endif
                                                                                     @endif
+                                                                                @endif
                                                                             </div>
                                                                         </div>
                                                                     </li>
@@ -697,15 +708,23 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         </div>
                                                                         <div class="col2">
                                                                             <div class="date">
-                                                                                    @if($item->timeLeft['hour'] != 0 )
-                                                                                        {{ $item->timeLeft['hour'] }} hours
+                                                                                @if($item->timeLeft['week'] != 0 )
+                                                                                    {{ $item->timeLeft['week'] }} weeks
+                                                                                
+                                                                                    @if($item->timeLeft['day'] != 0)
+                                                                                        {{ $item->timeLeft['day'] }} days
                                                                                     @else
-                                                                                        @if($item->timeLeft['min'] != 0 )
-                                                                                            {{ $item->timeLeft['min'] }} minutes
+                                                                                        @if($item->timeLeft['hour'] != 0 )
+                                                                                                {{ $item->timeLeft['hour'] }} hours
                                                                                         @else
-                                                                                            just now
+                                                                                            @if($item->timeLeft['min'] != 0 )
+                                                                                                {{ $item->timeLeft['min'] }} minutes
+                                                                                            @else
+                                                                                                just now
+                                                                                            @endif
                                                                                         @endif
                                                                                     @endif
+                                                                                @endif
                                                                             </div>
                                                                         </div>
                                                                     </li>
@@ -830,7 +849,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                 </a>
                                                             </div>
                                                             <div class="mt-img">
-                                                                <img src="/img/user.png"> </div>
+                                                                <img src="/img/user2.png"> </div>
                                                             <div class="mt-body">
                                                                 <h3 class="mt-username"> {{ $employee->name }} </h3>
                                                                 <p class="mt-user-title"> {{ $employee->position }} </p>
@@ -930,29 +949,25 @@ License: You must have a valid license purchased only from themeforest(the above
             </a>
             <ul>
                 <li>
-                    <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" target="_blank" class="active">
-                        <span>Purchase Metronic</span>
-                        <i class="icon-basket"></i>
+                    <a href="" class="active">
+                        <span>Home</span>
+                        <i class="icon-home"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/reviews/4021469?ref=keenthemes" target="_blank">
-                        <span>Customer Reviews</span>
-                        <i class="icon-users"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://keenthemes.com/showcast/" target="_blank">
-                        <span>Showcase</span>
+                    <a href="{{ route('employee.update') }}">
+                        <span>Update Profile</span>
                         <i class="icon-user"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="http://keenthemes.com/metronic-theme/changelog/" target="_blank">
-                        <span>Changelog</span>
-                        <i class="icon-graph"></i>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        <span>Logout</span>
+                        <i class="icon-logout"></i>
                     </a>
                 </li>
+                
             </ul>
             <span aria-hidden="true" class="quick-nav-bg"></span>
         </nav>

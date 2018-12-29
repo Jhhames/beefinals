@@ -54,25 +54,6 @@ class EmployeeController extends Controller
         }
     }
 
-    
-    // public function doTask(Request $request, $id){
-    //     $task = Task::where('id',$id);
-    //     if($task->exists()){
-    //         $update = $task->update(['done'=>1]);
-    //         if($update){
-    //             $activity = new Activity;
-    //             $notification = $this->employee->user()->name.' completed a task';
-    //             $activity->addActivity('done', $notification);
-    //             Session::flash('success','Task marked as done');
-    //             return redirect()->back();
-    //         }else{
-    //             return redirect()->back();
-    //         }
-    //     }else{
-    //         Session::flash('error','Task doesn\'t exist or has been deleted');
-    //         return redirect()->back();
-    //     }
-    // }
 
     public function doTask(Request $request, $id){
         $task = Task::where('id',$id);
