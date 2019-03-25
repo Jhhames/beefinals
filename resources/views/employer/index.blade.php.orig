@@ -542,8 +542,174 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                         </div>
                     </div>
+<<<<<<< HEAD
                 </div>
                 <div class="row">
+                    <div class="col-lg-6 col-xs-12 col-sm-12">
+                        <div class="portlet light bordered">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="icon-share font-dark hide"></i>
+                                    <span class="caption-subject font-dark bold uppercase">Recent Activities</span>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <div class="scroller" style="height: 300px;" data-always-visible="1"
+                                    data-rail-visible="0">
+                                    <ul class="feeds">
+                                        @if(isset($activities))
+                                        @foreach ($activities->take(10) as $item)
+                                        @switch($item->type)
+                                        @case('user')
+                                        <li>
+                                            <div class="col1">
+                                                <div class="cont">
+                                                    <div class="cont-col1">
+                                                        <div class="label label-sm label-info">
+                                                            <i class="icon-user"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cont-col2">
+                                                        <div class="desc"> {{ $item->notification }}
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col2">
+                                                <div class="date">
+                                                    @if($item->timeLeft['week'] != 0 )
+                                                    {{ $item->timeLeft['week'] }} weeks
+
+                                                    @if($item->timeLeft['day'] != 0)
+                                                    {{ $item->timeLeft['day'] }} days
+                                                    @else
+                                                    @if($item->timeLeft['hour'] != 0 )
+                                                    {{ $item->timeLeft['hour'] }} hours
+                                                    @else
+                                                    @if($item->timeLeft['min'] != 0 )
+                                                    {{ $item->timeLeft['min'] }} minutes
+                                                    @else
+                                                    just now
+                                                    @endif
+                                                    @endif
+                                                    @endif
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </li>
+                                        @break
+                                        @case('done')
+                                        <li>
+                                            <div class="col1">
+                                                <div class="cont">
+                                                    <div class="cont-col1">
+                                                        <div class="label label-sm label-info">
+                                                            <i class="icon-check"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cont-col2">
+                                                        <div class="desc"> {{ $item->notification }}
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col2">
+                                                <div class="date">
+                                                    @if($item->timeLeft['week'] != 0 )
+                                                    {{ $item->timeLeft['week'] }} weeks
+
+                                                    @if($item->timeLeft['day'] != 0)
+                                                    {{ $item->timeLeft['day'] }} days
+                                                    @else
+                                                    @if($item->timeLeft['hour'] != 0 )
+                                                    {{ $item->timeLeft['hour'] }} hours
+                                                    @else
+                                                    @if($item->timeLeft['min'] != 0 )
+                                                    {{ $item->timeLeft['min'] }} minutes
+                                                    @else
+                                                    just now
+                                                    @endif
+                                                    @endif
+                                                    @endif
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </li>
+                                        @break
+                                        @case('appraisal')
+                                        <li>
+                                            <div class="col1">
+                                                <div class="cont">
+                                                    <div class="cont-col1">
+                                                        <div class="label label-sm label-info">
+                                                            <i class="icon-badge"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cont-col2">
+                                                        <div class="desc"> {{ $item->notification }}
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col2">
+                                                <div class="date">
+                                                    @if($item->timeLeft['week'] != 0 )
+                                                    {{ $item->timeLeft['week'] }} weeks
+
+                                                    @if($item->timeLeft['day'] != 0)
+                                                    {{ $item->timeLeft['day'] }} days
+                                                    @else
+                                                    @if($item->timeLeft['hour'] != 0 )
+                                                    {{ $item->timeLeft['hour'] }} hours
+                                                    @else
+                                                    @if($item->timeLeft['min'] != 0 )
+                                                    {{ $item->timeLeft['min'] }} minutes
+                                                    @else
+                                                    just now
+                                                    @endif
+                                                    @endif
+                                                    @endif
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </li>
+                                        @break
+                                        @case('leave')
+                                        <li>
+                                            <div class="col1">
+                                                <div class="cont">
+                                                    <div class="cont-col1">
+                                                        <div class="label label-sm label-info">
+                                                            <i class="icon-plane"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cont-col2">
+                                                        <div class="desc"> {{ $item->notification }}
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col2">
+                                                <div class="date">
+                                                @if($item->timeLeft['week'] != 0 )
+                                                {{ $item->timeLeft['week'] }} weeks
+                                            
+                                                @if($item->timeLeft['day'] != 0)
+                                                {{ $item->timeLeft['day'] }} days
+                                                @else
+                                                @if($item->timeLeft['hour'] != 0 )
+                                                {{ $item->timeLeft['hour'] }} hours
+                                                @else
+                                                @if($item->timeLeft['min'] != 0 )
+                                                {{ $item->timeLeft['min'] }} minutes
+                                                @else
+                                                just now
+=======
+                    <div class="row">
                         <div class="col-lg-6 col-xs-12 col-sm-12">
                             <div class="portlet light bordered">
                                 <div class="portlet-title">
@@ -551,12 +717,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <i class="icon-share font-dark hide"></i>
                                         <span class="caption-subject font-dark bold uppercase">Recent Activities</span>
                                     </div>
-                                    
                                 </div>
                                 <div class="portlet-body">
                                     <div class="scroller" style="height: 300px;" data-always-visible="1" data-rail-visible="0">
                                         <ul class="feeds">
-                                                @if(isset($activities))
+                                            @if(isset($activities))
                                                 @foreach ($activities as $item)
                                                     @switch($item->type)
                                                         @case('user')
@@ -733,7 +898,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         </div>
                                                                         <div class="col2">
                                                                             <div class="date">
-                                                                                @if($item->timeLeft['week'] != 0 )
+                                                                                    @if($item->timeLeft['week'] != 0 )
                                                                                     {{ $item->timeLeft['week'] }} weeks
                                                                                 
                                                                                     @if($item->timeLeft['day'] != 0)
@@ -772,7 +937,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         </div>
                                                                         <div class="col2">
                                                                             <div class="date">
-                                                                                @if($item->timeLeft['week'] != 0 )
+                                                                                    @if($item->timeLeft['week'] != 0 )
                                                                                     {{ $item->timeLeft['week'] }} weeks
                                                                                 
                                                                                     @if($item->timeLeft['day'] != 0)
@@ -794,85 +959,171 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     </li>
                                                         @endswitch
                                                     @endforeach
+>>>>>>> f96dcd9c2e0ee969fe768d9ccc2862f72d5ff7e0
                                                 @endif
-                                        </ul>
-                                    </div>
-                                    <div class="scroller-footer">
-                                        <div class="btn-arrow-link pull-right">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-xs-12 col-sm-12">
-                            <div class="portlet light tasks-widget bordered">
-                                <div class="portlet-title">
-                                    <div class="caption">
-                                        <i class="icon-share font-dark hide"></i>
-                                        <span class="caption-subject font-dark bold uppercase">Tasks</span>
-                                        
-                                    </div>
-                                    
-                                </div>
-                                <div class="portlet-body">
-                                    <div class="task-content">
-                                        <div class="scroller" style="height: 312px;" data-always-visible="1" data-rail-visible1="1">
-                                            <!-- START TASK LIST -->
-                                            <ul class="task-list">
-                                                @if(isset($tasks))
-                                                    @foreach ($tasks as $item)
-                                                    <li>
-                                                        <div class="task-title">
-                                                                <span class="task-title-sp">{{$item->task}} </span>
-                                                                
-                                                                    @if($item->done)
-                                                                        <span class="badge badge-success">Done </span>
-                                                                    @else
-                                                                        <span class="badge badge-danger"> Pending </span>
-                                                                    @endif
-                                                                
-                                                                
-                                                            </div>
-                                                            <div class="task-config">
-                                                                    <div class="task-config-btn btn-group">
-                                                                        <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                                                            <i class="fa fa-user"></i>
-                                                                        </a>
-                                                                        <ul class="dropdown-menu pull-right">
-                                                                            <li style="padding:1em">
-                                                                                {{ $item->employer }}
-                                                                            </li>
-                                                                            <li>
-                                                                            <a href="do/{{$item->id}}" onclick="event.preventDefault();
-                                                                                document.getElementById('do_task{{$item->id}}').submit();">
-                                                                                <i class="icon-check"></i>
-                                                                                    Mark As done 
-                                                                                </a>
-                                                                            <form action="{{ url('/employee/doTask/'.$item->id ) }}" method="POST" id="do_task{{$item->id}}">
-                                                                                    @csrf
-                                                                                </form>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                            </div>
-                                                            
-                                                        </li>
-                                                                
-                                                    @endforeach
                                                 @endif
-                                            </ul>
-                                            <!-- END START TASK LIST -->
-                                        </div>
-                                    </div>
-                                    <div class="task-footer">
-                                        <div class="btn-arrow-link pull-right">
-                                        </div>
+                                                @endif
+                                                @endif
+                                                </div>
+                                            </div>
+                                        </li>
+                                        @break
+                                        @case('task')
+                                        <li>
+                                            <div class="col1">
+                                                <div class="cont">
+                                                    <div class="cont-col1">
+                                                        <div class="label label-sm label-info">
+                                                            <i class="icon-list"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cont-col2">
+                                                        <div class="desc"> {{ $item->notification }}
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col2">
+                                                <div class="date">
+                                                    @if($item->timeLeft['week'] != 0 )
+                                                    {{ $item->timeLeft['week'] }} weeks
+
+                                                    @if($item->timeLeft['day'] != 0)
+                                                    {{ $item->timeLeft['day'] }} days
+                                                    @else
+                                                    @if($item->timeLeft['hour'] != 0 )
+                                                    {{ $item->timeLeft['hour'] }} hours
+                                                    @else
+                                                    @if($item->timeLeft['min'] != 0 )
+                                                    {{ $item->timeLeft['min'] }} minutes
+                                                    @else
+                                                    just now
+                                                    @endif
+                                                    @endif
+                                                    @endif
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </li>
+                                        @break
+                                        @default
+                                        <li>
+                                            <div class="col1">
+                                                <div class="cont">
+                                                    <div class="cont-col1">
+                                                        <div class="label label-sm label-info">
+                                                            <i class="icon-bell"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cont-col2">
+                                                        <div class="desc"> {{ $item->notification }}
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col2">
+                                                <div class="date">
+                                                    @if($item->timeLeft['week'] != 0 )
+                                                    {{ $item->timeLeft['week'] }} weeks
+
+                                                    @if($item->timeLeft['day'] != 0)
+                                                    {{ $item->timeLeft['day'] }} days
+                                                    @else
+                                                    @if($item->timeLeft['hour'] != 0 )
+                                                    {{ $item->timeLeft['hour'] }} hours
+                                                    @else
+                                                    @if($item->timeLeft['min'] != 0 )
+                                                    {{ $item->timeLeft['min'] }} minutes
+                                                    @else
+                                                    just now
+                                                    @endif
+                                                    @endif
+                                                    @endif
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </li>
+                                        @endswitch
+                                        @endforeach
+                                        @endif
+                                    </ul>
+                                </div>
+                                <div class="scroller-footer">
+                                    <div class="btn-arrow-link pull-right">
+                                        {{-- <a href="javascript:;">See All Records</a> --}}
+                                        {{-- <i class="icon-arrow-right"></i> --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+                    <div class="col-lg-6 col-xs-12 col-sm-12">
+                        <div class="portlet light tasks-widget bordered">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="icon-share font-dark hide"></i>
+                                    <span class="caption-subject font-dark bold uppercase">Tasks</span>
+
+                                </div>
+
+                            </div>
+                            <div class="portlet-body">
+                                <div class="task-content">
+                                    <div class="scroller" style="height: 312px;" data-always-visible="1"
+                                        data-rail-visible1="1">
+                                        <!-- START TASK LIST -->
+                                        <ul class="task-list">
+                                            @if(isset($tasks))
+                                            @foreach ($tasks as $item)
+                                            <li>
+                                                <div class="task-title">
+                                                    <span class="task-title-sp">{{$item->task}} </span>
+                                                    {{-- <span class="label label-sm label-success">  --}}
+                                                    @if($item->done)
+                                                    <span class="badge badge-success">Done </span>
+                                                    @else
+                                                    <span class="badge badge-danger"> Pending </span>
+                                                    @endif
+                                                    {{-- </span> --}}
+
+                                                </div>
+                                                <div class="task-config">
+                                                    <div class="task-config-btn btn-group">
+                                                        <a class="btn btn-sm default" href="javascript:;"
+                                                            data-toggle="dropdown" data-hover="dropdown"
+                                                            data-close-others="true">
+                                                            <i class="fa fa-user"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu pull-right">
+                                                            <li style="padding:1em">
+                                                                {{ $item->employee }}
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                            </li>
+
+                                            @endforeach
+                                            @endif
+                                        </ul>
+                                        <!-- END START TASK LIST -->
+                                    </div>
+                                </div>
+                                <div class="task-footer">
+                                    <div class="btn-arrow-link pull-right">
+                                        {{-- <a href="javascript:;">See All Records</a>
+                                        <i class="icon-arrow-right"></i> --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-lg-6 col-xs-12 col-sm-12">
                         <div class="portlet light bordered">
@@ -1002,6 +1253,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <a href="#index" class="go2top">
                 <i class="icon-arrow-up"></i>
             </a>
+<<<<<<< HEAD
             <!-- END FOOTER -->
         </div>
     </div>
@@ -1044,6 +1296,35 @@ License: You must have a valid license purchased only from themeforest(the above
     <div class="quick-nav-overlay"></div>
     <!-- END QUICK NAV -->
     <!--[if lt IE 9]>
+=======
+            <ul>
+                <li>
+                    <a href="" class="active">
+                        <span>Home</span>
+                        <i class="icon-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/employees">
+                        <span>All Employees Profile</span>
+                        <i class="icon-users"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        <span>Logout</span>
+                        <i class="icon-logout"></i>
+                    </a>
+                </li>
+                
+            </ul>
+            <span aria-hidden="true" class="quick-nav-bg"></span>
+        </nav>
+        <div class="quick-nav-overlay"></div>
+        <!-- END QUICK NAV -->
+        <!--[if lt IE 9]>
+>>>>>>> f96dcd9c2e0ee969fe768d9ccc2862f72d5ff7e0
 <script src="/assets/global/plugins/respond.min.js"></script>
 <script src="/assets/global/plugins/excanvas.min.js"></script> 
 <script src="/assets/global/plugins/ie8.fix.min.js"></script> 
