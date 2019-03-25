@@ -160,7 +160,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="row">
                         <div class="portlet boarderd light"  style="padding:1em">
                             <div class="portlet-title">
-                                <span class="alert alert-danger"> <span class="fa fa-exclamation-triangle"></span> Your Profile Update needs attention,Fill in your details to proceed to your dashboard </span>
+                                <div class="alert alert-danger"> <span class="fa fa-exclamation-triangle"></span> Your Profile Update needs attention,Fill in your details to proceed to your dashboard </div>
                                 <h3 class="bold uppercase">  </h3>
 
                             </div>
@@ -276,37 +276,33 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- END CONTAINER -->
         <!-- BEGIN QUICK NAV -->
         <nav class="quick-nav">
-            <a class="quick-nav-trigger" href="#0">
-                <span aria-hidden="true"></span>
-            </a>
-            <ul>
-                <li>
-                    <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" target="_blank" class="active">
-                        <span>Purchase Metronic</span>
-                        <i class="icon-basket"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/reviews/4021469?ref=keenthemes" target="_blank">
-                        <span>Customer Reviews</span>
-                        <i class="icon-users"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://keenthemes.com/showcast/" target="_blank">
-                        <span>Showcase</span>
-                        <i class="icon-user"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://keenthemes.com/metronic-theme/changelog/" target="_blank">
-                        <span>Changelog</span>
-                        <i class="icon-graph"></i>
-                    </a>
-                </li>
-            </ul>
-            <span aria-hidden="true" class="quick-nav-bg"></span>
-        </nav>
+                <a class="quick-nav-trigger" href="#0">
+                    <span aria-hidden="true"></span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="/employee/dashboard" class="active">
+                            <span>Home</span>
+                            <i class="icon-home"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="active">
+                            <span>Update Profile</span>
+                            <i class="icon-user"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                            <span>Logout</span>
+                            <i class="icon-logout"></i>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <span aria-hidden="true" class="quick-nav-bg"></span>
+            </nav>
         <div class="quick-nav-overlay"></div>
         <!-- END QUICK NAV -->
         <!--[if lt IE 9]>

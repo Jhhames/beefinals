@@ -20,7 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         body{
-            background-image: url('/img/background.jpeg');
+            background-image: url('/img/background.jpg');
             background-color: rgba(0, 0, 0, 0.7);
             background-blend-mode: overlay;
             background-size: cover;

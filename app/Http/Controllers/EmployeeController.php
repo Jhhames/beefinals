@@ -6,9 +6,11 @@ use App\Task;
 use App\Leave;
 use App\Activity;
 use App\Employee;
+use App\Training;
 use App\Appraisal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -47,32 +49,14 @@ class EmployeeController extends Controller
                 'appraisals' => $this->getAppraisals(),
                 'tasks' => $this->getMyTasks(),
                 'leaves' => Leave::where('employee', $this->employee->user()->name)->get(),
-                'activities' => $this->homeController->getActivities()
+                'activities' => $this->homeController->getActivities(),
+                'training'=> Training::all()
             ]);
         }else{
             return redirect()->route('employee.update');
         }
     }
 
-    
-    // public function doTask(Request $request, $id){
-    //     $task = Task::where('id',$id);
-    //     if($task->exists()){
-    //         $update = $task->update(['done'=>1]);
-    //         if($update){
-    //             $activity = new Activity;
-    //             $notification = $this->employee->user()->name.' completed a task';
-    //             $activity->addActivity('done', $notification);
-    //             Session::flash('success','Task marked as done');
-    //             return redirect()->back();
-    //         }else{
-    //             return redirect()->back();
-    //         }
-    //     }else{
-    //         Session::flash('error','Task doesn\'t exist or has been deleted');
-    //         return redirect()->back();
-    //     }
-    // }
 
     public function doTask(Request $request, $id){
         $task = Task::where('id',$id);
@@ -87,6 +71,22 @@ class EmployeeController extends Controller
             }
         }else{
             Session::flash('error','Task Doesn\'t exist');
+            
+        }
+    }
+    public function doTrain(Request $request, $id){
+        $task = Training::where('id',$id);
+
+        if($task->exists()){
+            if($task->update(['done'=>1])){
+                $activity = new Activity;
+                $notification = $this->employee->user()->name.' completed a training exercise';
+                $activity->addActivity('done', $notification);
+                Session::flash('success','Training marked as completed');
+                return redirect()->back();
+            }
+        }else{
+            Session::flash('error','Training Doesn\'t exist');
             
         }
     }
@@ -162,6 +162,40 @@ class EmployeeController extends Controller
         }
     }
 
+    public function downloadAppraisal(Request $request, $id){
+        // return $id;
+        $appraisal = Appraisal::where('id',$id)->first();
+
+        $data = [
+            'name' => $appraisal->employee,
+            'appraised_by' => $appraisal->employer,
+            'summary' => $appraisal->summary,
+            'report' => $appraisal->report
+        ];
+
+        $pdf = App::make('dompdf.wrapper');
+
+        $pdf->loadView('pdf.appraisal',$data);
+        return $pdf->download($data['name'].'.pdf');
+    }
+
+    public function downloadSalary(){
+        $salary = Auth::guard('employee')->user()->salary;
+        $data = [
+            'name' => Auth::guard('employee')->user()->name,
+            'salary' => $salary,
+            'tax' => $this->calcTax($salary),
+            'net' => $salary - $this->calcTax($salary)
+        ];
+
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadView('pdf.salary',$data);
+        
+        return $pdf->download($data['name'].'.pdf');
+
+        
+    }
+
     protected function updateRedirect(){
         return view('employee.update-profile');
     }
@@ -187,5 +221,9 @@ class EmployeeController extends Controller
 
     protected function getLeaves(){
         return Leave::where('employee',$this->employee->user()->name)->get();
+    }
+
+    protected function calcTax($a){
+        return 0.15*$a;
     }
 }

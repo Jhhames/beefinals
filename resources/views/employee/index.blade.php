@@ -48,8 +48,8 @@ License: You must have a valid license purchased only from themeforest(the above
         <link href="/assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-
+        {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"> --}}
+        <link rel="stylesheet" href="/css/toastr.min.css">
         <link href="/assets/layouts/layout5/css/layout.min.css" rel="stylesheet" type="text/css" />
         <link href="/assets/layouts/layout5/css/custom.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
@@ -230,7 +230,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                     <ul class="nav nav-tabs">
                                         <li>
-                                            <a href="" data-toggle="tab"> View All </a>
+                                            {{-- <a href="" data-toggle="tab"> View All </a> --}}
                                         </li>
                                     </ul>
                                 </div>
@@ -248,10 +248,19 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <div class="mt-comment-body">
                                                                 <div class="mt-comment-info">
                                                                     <span class="mt-comment-author"> {{ $item->employee }} </span>
-                                                                    <span class="mt-comment-date"> {{ $item->created_at }} </span>
+                                                                    <span class="mt-comment-date"> {{ 
+                                                                    \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }} </span>
                                                                 </div>
                                                                 <div class="mt-comment-text">
                                                                     {{ $item->summary }}
+                                                                    <br>
+                                                        
+                                                                <button class="btn btn-icon-only blue" onclick="event.preventDefault();
+                                                                document.getElementById('appraisal-download{{$item->id}}').submit();" style="margin-top:4px"> <span class="fa fa-download"></span> 
+                                                                </button>
+                                                                <form action="/employee/download/appraisal/{{$item->id}}" method="POST" id="appraisal-download{{$item->id}}">
+                                                                    @csrf
+                                                                </form>
                                                                 </div>
                                                                 
                                                             </div>
@@ -277,7 +286,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                     <ul class="nav nav-tabs">
                                         <li >
-                                            <a href="" data-toggle="tab"> view all </a>
+                                            {{-- <a href="" data-toggle="tab"> view all </a> --}}
                                         </li>
                                         
                                     </ul>
@@ -487,35 +496,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <i class="icon-share font-dark hide"></i>
                                         <span class="caption-subject font-dark bold uppercase">Recent Activities</span>
                                     </div>
-                                    <div class="actions">
-                                        <div class="btn-group">
-                                            <a class="btn btn-sm blue btn-outline btn-circle" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> Filter By
-                                                <i class="fa fa-angle-down"></i>
-                                            </a>
-                                            <div class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
-                                                <label class="mt-checkbox mt-checkbox-outline">
-                                                    <input type="checkbox" /> Finance
-                                                    <span></span>
-                                                </label>
-                                                <label class="mt-checkbox mt-checkbox-outline">
-                                                    <input type="checkbox" checked="" /> Membership
-                                                    <span></span>
-                                                </label>
-                                                <label class="mt-checkbox mt-checkbox-outline">
-                                                    <input type="checkbox" /> Customer Support
-                                                    <span></span>
-                                                </label>
-                                                <label class="mt-checkbox mt-checkbox-outline">
-                                                    <input type="checkbox" checked="" /> HR
-                                                    <span></span>
-                                                </label>
-                                                <label class="mt-checkbox mt-checkbox-outline">
-                                                    <input type="checkbox" /> System
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                                 <div class="portlet-body">
                                     <div class="scroller" style="height: 300px;" data-always-visible="1" data-rail-visible="0">
@@ -541,13 +522,21 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     </div>
                                                                     <div class="col2">
                                                                         <div class="date">
-                                                                            @if($item->timeLeft['hour'] != 0 )
-                                                                                    {{ $item->timeLeft['hour'] }} hours
-                                                                            @else
-                                                                                @if($item->timeLeft['min'] != 0 )
-                                                                                    {{ $item->timeLeft['min'] }} minutes
+                                                                                @if($item->timeLeft['week'] != 0 )
+                                                                                {{ $item->timeLeft['week'] }} weeks
+                                                                            
+                                                                                @if($item->timeLeft['day'] != 0)
+                                                                                    {{ $item->timeLeft['day'] }} days
                                                                                 @else
-                                                                                    just now
+                                                                                    @if($item->timeLeft['hour'] != 0 )
+                                                                                            {{ $item->timeLeft['hour'] }} hours
+                                                                                    @else
+                                                                                        @if($item->timeLeft['min'] != 0 )
+                                                                                            {{ $item->timeLeft['min'] }} minutes
+                                                                                        @else
+                                                                                            just now
+                                                                                        @endif
+                                                                                    @endif
                                                                                 @endif
                                                                             @endif
                                                                             </div>
@@ -572,16 +561,23 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         </div>
                                                                         <div class="col2">
                                                                             <div class="date">
-                                                                                    @if($item->timeLeft['hour'] != 0 )
-                                                                                        {{ $item->timeLeft['hour'] }} hours
+                                                                                    @if($item->timeLeft['week'] != 0 )
+                                                                                    {{ $item->timeLeft['week'] }} weeks
+                                                                                
+                                                                                    @if($item->timeLeft['day'] != 0)
+                                                                                        {{ $item->timeLeft['day'] }} days
                                                                                     @else
-                                                                                        @if($item->timeLeft['min'] != 0 )
-                                                                                            {{ $item->timeLeft['min'] }} minutes
+                                                                                        @if($item->timeLeft['hour'] != 0 )
+                                                                                                {{ $item->timeLeft['hour'] }} hours
                                                                                         @else
-                                                                                            just now
+                                                                                            @if($item->timeLeft['min'] != 0 )
+                                                                                                {{ $item->timeLeft['min'] }} minutes
+                                                                                            @else
+                                                                                                just now
+                                                                                            @endif
                                                                                         @endif
                                                                                     @endif
-                                                                                
+                                                                                @endif
                                                                             </div>
                                                                         </div>
                                                                     </li>
@@ -604,15 +600,23 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         </div>
                                                                         <div class="col2">
                                                                             <div class="date">
-                                                                                    @if($item->timeLeft['hour'] != 0 )
-                                                                                    {{ $item->timeLeft['hour'] }} hours
+                                                                                    @if($item->timeLeft['week'] != 0 )
+                                                                                    {{ $item->timeLeft['week'] }} weeks
+                                                                                
+                                                                                    @if($item->timeLeft['day'] != 0)
+                                                                                        {{ $item->timeLeft['day'] }} days
                                                                                     @else
-                                                                                        @if($item->timeLeft['min'] != 0 )
-                                                                                            {{ $item->timeLeft['min'] }} minutes
+                                                                                        @if($item->timeLeft['hour'] != 0 )
+                                                                                                {{ $item->timeLeft['hour'] }} hours
                                                                                         @else
-                                                                                            just now
+                                                                                            @if($item->timeLeft['min'] != 0 )
+                                                                                                {{ $item->timeLeft['min'] }} minutes
+                                                                                            @else
+                                                                                                just now
+                                                                                            @endif
                                                                                         @endif
                                                                                     @endif
+                                                                                @endif
                                                                             </div>
                                                                         </div>
                                                                     </li>
@@ -635,15 +639,23 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         </div>
                                                                         <div class="col2">
                                                                             <div class="date">
-                                                                                    @if($item->timeLeft['hour'] != 0 )
-                                                                                        {{ $item->timeLeft['hour'] }} hours
+                                                                                    @if($item->timeLeft['week'] != 0 )
+                                                                                    {{ $item->timeLeft['week'] }} weeks
+                                                                                
+                                                                                    @if($item->timeLeft['day'] != 0)
+                                                                                        {{ $item->timeLeft['day'] }} days
                                                                                     @else
-                                                                                        @if($item->timeLeft['min'] != 0 )
-                                                                                            {{ $item->timeLeft['min'] }} minutes
+                                                                                        @if($item->timeLeft['hour'] != 0 )
+                                                                                                {{ $item->timeLeft['hour'] }} hours
                                                                                         @else
-                                                                                            just now
+                                                                                            @if($item->timeLeft['min'] != 0 )
+                                                                                                {{ $item->timeLeft['min'] }} minutes
+                                                                                            @else
+                                                                                                just now
+                                                                                            @endif
                                                                                         @endif
                                                                                     @endif
+                                                                                @endif
                                                                             </div>
                                                                         </div>
                                                                     </li>
@@ -666,15 +678,23 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         </div>
                                                                         <div class="col2">
                                                                             <div class="date">
-                                                                                    @if($item->timeLeft['hour'] != 0 )
-                                                                                        {{ $item->timeLeft['hour'] }} hours
+                                                                                @if($item->timeLeft['week'] != 0 )
+                                                                                    {{ $item->timeLeft['week'] }} weeks
+                                                                                
+                                                                                    @if($item->timeLeft['day'] != 0)
+                                                                                        {{ $item->timeLeft['day'] }} days
                                                                                     @else
-                                                                                        @if($item->timeLeft['min'] != 0 )
-                                                                                            {{ $item->timeLeft['min'] }} minutes
+                                                                                        @if($item->timeLeft['hour'] != 0 )
+                                                                                                {{ $item->timeLeft['hour'] }} hours
                                                                                         @else
-                                                                                            just now
+                                                                                            @if($item->timeLeft['min'] != 0 )
+                                                                                                {{ $item->timeLeft['min'] }} minutes
+                                                                                            @else
+                                                                                                just now
+                                                                                            @endif
                                                                                         @endif
                                                                                     @endif
+                                                                                @endif
                                                                             </div>
                                                                         </div>
                                                                     </li>
@@ -697,15 +717,23 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         </div>
                                                                         <div class="col2">
                                                                             <div class="date">
-                                                                                    @if($item->timeLeft['hour'] != 0 )
-                                                                                        {{ $item->timeLeft['hour'] }} hours
+                                                                                @if($item->timeLeft['week'] != 0 )
+                                                                                    {{ $item->timeLeft['week'] }} weeks
+                                                                                
+                                                                                    @if($item->timeLeft['day'] != 0)
+                                                                                        {{ $item->timeLeft['day'] }} days
                                                                                     @else
-                                                                                        @if($item->timeLeft['min'] != 0 )
-                                                                                            {{ $item->timeLeft['min'] }} minutes
+                                                                                        @if($item->timeLeft['hour'] != 0 )
+                                                                                                {{ $item->timeLeft['hour'] }} hours
                                                                                         @else
-                                                                                            just now
+                                                                                            @if($item->timeLeft['min'] != 0 )
+                                                                                                {{ $item->timeLeft['min'] }} minutes
+                                                                                            @else
+                                                                                                just now
+                                                                                            @endif
                                                                                         @endif
                                                                                     @endif
+                                                                                @endif
                                                                             </div>
                                                                         </div>
                                                                     </li>
@@ -716,8 +744,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                     <div class="scroller-footer">
                                         <div class="btn-arrow-link pull-right">
-                                            <a href="javascript:;">See All Records</a>
-                                            <i class="icon-arrow-right"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -743,13 +769,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <li>
                                                         <div class="task-title">
                                                                 <span class="task-title-sp">{{$item->task}} </span>
-                                                                {{-- <span class="label label-sm label-success">  --}}
+                                                                
                                                                     @if($item->done)
                                                                         <span class="badge badge-success">Done </span>
                                                                     @else
                                                                         <span class="badge badge-danger"> Pending </span>
                                                                     @endif
-                                                                 {{-- </span> --}}
+                                                                
                                                                 
                                                             </div>
                                                             <div class="task-config">
@@ -785,8 +811,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                     <div class="task-footer">
                                         <div class="btn-arrow-link pull-right">
-                                            <a href="javascript:;">See All Records</a>
-                                            <i class="icon-arrow-right"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -803,12 +827,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <span class="caption-subject font-hide bold uppercase"> <span class="icon-users "></span>New Employees</span>
                                     </div>
                                     <div class="actions">
-                                        <div class="btn-group">
-                                            {{-- <a class="btn green-haze btn-outline btn-circle btn-sm" href="" data-close-others="true"> View  All <span class="icon-users"></span> --}}
-
-                                            </a>
-                                            
-                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <div class="portlet-body">
@@ -830,7 +849,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                 </a>
                                                             </div>
                                                             <div class="mt-img">
-                                                                <img src="/img/user.png"> </div>
+                                                                <img src="/img/user2.png"> </div>
                                                             <div class="mt-body">
                                                                 <h3 class="mt-username"> {{ $employee->name }} </h3>
                                                                 <p class="mt-user-title"> {{ $employee->position }} </p>
@@ -856,56 +875,144 @@ License: You must have a valid license purchased only from themeforest(the above
                         
                         </div>
                         <div class="col-lg-6 col-xs-12 col-sm-12">
-                            <div class="portlet light bordered">
+                            {{-- <div class="portlet light bordered">
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="icon-bubble font-dark hide"></i>
-                                        <span class="caption-subject font-hide bold uppercase"> <span class="icon-badge"></span> Appraisals </span>
+                                        <span class="caption-subject font-hide bold uppercase"> <span class="icon-badge"></span> Training Exercise </span>
+                                        <br>
+                                        <small>Note:<em> You're expected to complete the underlisted training Exercise before due date </em> </small>
                                     </div>
                                     <div class="actions">
-                                        <div class="btn-group">
-                                            <a class="btn green-haze btn-outline btn-circle btn-sm" href="/admin/employees" data-close-others="true"> View  All <span class="icon-users"></span>
+                                        
+                                    </div>
+                                </div>
 
-                                            </a>
+                                <div class="portlet-body">
+                                    <div class="task-content">
+                                        <div class="scroller" style="height: 312px;" data-always-visible="1" data-rail-visible1="1">
+                                            <!-- START TASK LIST -->
+                                            <ul class="task-list">
+                                                @if(isset($training))
+                                                    @foreach ($training as $item)
+                                                    <li>
+                                                        <div class="task-title">
+                                                                <span class="task-title-sp">{{$item->name}} </span>
+                                                               
+                                                                    @if($item->done)
+                                                                        <span class="badge badge-success">Done </span>
+                                                                    @else
+                                                                        <span class="badge badge-danger"> Pending </span>
+                                                                    @endif
+                                                            
+                                                            </div>
+                                                            <div class="task-config">
+                                                                    <div class="task-config-btn btn-group">
+                                                                        <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                                            <i class="fa fa-user"></i>
+                                                                        </a>
+                                                                        <ul class="dropdown-menu pull-right">
+                                                                            <li style="padding:1em">
+                                                                                {{ $item->employer }}
+                                                                            </li>
+                                                                            <li>
+                                                                            <a href="do/{{$item->id}}" onclick="event.preventDefault();
+                                                                                document.getElementById('do_task{{$item->id}}').submit();">
+                                                                                <i class="icon-check"></i>
+                                                                                    Mark As done 
+                                                                                </a>
+                                                                            <form action="{{ url('/employee/doTraining/'.$item->id ) }}" method="POST" id="do_task{{$item->id}}">
+                                                                                    @csrf
+                                                                                </form>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                            </div>
+                                                            
+                                                        </li>
+                                                                
+                                                    @endforeach
+                                                @endif
+                                            </ul>
+                                            <!-- END START TASK LIST -->
+                                        </div>
+                                    </div>
+                                    <div class="task-footer">
+                                        <div class="btn-arrow-link pull-right">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="portlet-body">
-                                    <div class="row">
-                                            @php
-                                            $count = 0;   
-                                        @endphp
-                                        @isset($admins) 
-                                            @foreach ($admins as $admin)
-                                            @php if($count > 2)
-                                                break;
-                                            @endphp
-                                            <div class="col-md-4">
-                                                <div class="mt-widget-1">
-                                                        <div class="mt-icon">
-                                                            <a href="#">
-                                                                <i class="icon-plus"></i>
-                                                            </a>
-                                                        </div>
-                                                        <div class="mt-img">
-                                                            <img src="/img/user.png"> </div>
-                                                        <div class="mt-body">
-                                                            <h3 class="mt-username"> {{ $admin->name }} </h3>
-                                                            <p class="mt-user-title"> {{ $admin->position }} </p>
-                                                            <div class="mt-stats">
+                            </div> --}}
+
+                            <div class="portlet light tasks-widget bordered">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="icon-share font-dark hide"></i>
+                                                <span class="caption-subject font-hide bold uppercase"> <span class="icon-badge"></span> Training Exercise </span>
+                                            <br>
+                                            <small>Note:<em> You're expected to complete the underlisted training Exercise before due date </em> </small>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="portlet-body">
+                                        <div class="task-content">
+                                            <div class="scroller" style="height: 312px;" data-always-visible="1" data-rail-visible1="1">
+                                                <!-- START TASK LIST -->
+                                                <ul class="task-list">
+                                                    @if(isset($training))
+                                                        @foreach ($training as $item)
+                                                        <li>
+                                                            <div class="task-title">
+                                                                    <span class="task-title-sp">{{$item->name}} </span>
+                                                                    {{-- <span class="label label-sm label-success">  --}}
+                                                                        @if($item->done)
+                                                                            <span class="badge badge-success">Done </span>
+                                                                        @else
+                                                                            <span class="badge badge-danger"> Pending </span>
+                                                                        @endif
+                                                                     {{-- </span> --}}
+                                                                    
+                                                                </div>
+                                                                <div class="task-config">
+                                                                        <div class="task-config-btn btn-group">
+                                                                            <a class="btn btn-sm default" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                                                <i class="fa fa-user"></i>
+                                                                            </a>
+                                                                            <ul class="dropdown-menu pull-right">
+                                                                                <li style="padding:1em">
+                                                                                    {{ $item->employer }}
+                                                                                </li>
+                                                                                <li>
+                                                                                <a href="do/{{$item->id}}" onclick="event.preventDefault();
+                                                                                    document.getElementById('do_task{{$item->id}}').submit();">
+                                                                                    <i class="icon-check"></i>
+                                                                                        Mark As done 
+                                                                                    </a>
+                                                                                <form action="{{ url('/employee/doTrain/'.$item->id ) }}" method="POST" id="do_task{{$item->id}}">
+                                                                                        @csrf
+                                                                                    </form>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                </div>
                                                                 
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                @php
-                                                    $count++
-                                                @endphp
-                                            @endforeach
-                                            @endisset
+                                                            </li>
+                                                                    
+                                                        @endforeach
+                                                    @endif
+                                                </ul>
+                                                <!-- END START TASK LIST -->
+                                            </div>
+                                        </div>
+                                        <div class="task-footer">
+                                            <div class="btn-arrow-link pull-right">
+                                                {{-- <a href="javascript:;">See All Records</a>
+                                                <i class="icon-arrow-right"></i> --}}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             
                         </div>
                         
@@ -930,29 +1037,32 @@ License: You must have a valid license purchased only from themeforest(the above
             </a>
             <ul>
                 <li>
-                    <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" target="_blank" class="active">
-                        <span>Purchase Metronic</span>
-                        <i class="icon-basket"></i>
+                    <a href="" class="active">
+                        <span>Home</span>
+                        <i class="icon-home"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/reviews/4021469?ref=keenthemes" target="_blank">
-                        <span>Customer Reviews</span>
-                        <i class="icon-users"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://keenthemes.com/showcast/" target="_blank">
-                        <span>Showcase</span>
+                    <a href="{{ route('employee.update') }}">
+                        <span>Update Profile</span>
                         <i class="icon-user"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="http://keenthemes.com/metronic-theme/changelog/" target="_blank">
-                        <span>Changelog</span>
-                        <i class="icon-graph"></i>
+                    <a href="{{ route('salary.download') }}">
+                        <span>Download Salary Slip</span>
+                        <i class="icon-cloud-download"></i>
+                    </a>
+                    
+                </li>
+                <li>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        <span>Logout</span>
+                        <i class="icon-logout"></i>
                     </a>
                 </li>
+                
             </ul>
             <span aria-hidden="true" class="quick-nav-bg"></span>
         </nav>
@@ -1016,63 +1126,6 @@ License: You must have a valid license purchased only from themeforest(the above
 {{-- MOADL TWO --}}
 
       
-      <!-- Modal -->
-      <div class="modal fade" id="addTask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel" >Assign Task</h3>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <!-- Default form register -->
-                <form action="{{ route('admin.task.submit') }}" method="POST">
-                    @csrf
-                    <div class="form-group">
-                        <label for="taskEmp"> <strong>Employee</strong> </label>
-                        <select name="employee" id="taskEmp" class="form-control">
-                            @if(isset($employees))
-                                @foreach ($employees as $item)
-                                    <option value="{{$item->name}}"> {{$item->name}} </option>
-                                    
-                                @endforeach
-                            @endif
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="taskTask"><strong>Task</strong></label>
-                        <input type="text" class="form-control" name="task" id="taskTask" placeholder="Task Summary">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="taskDesc"><strong>Task Description</strong></label>
-                        <textarea name="description" id="taskDesc" class="form-control" cols="30" rows="8" placeholder="Full Task Description"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="dateTime"><strong>Due at</strong></label>
-                        <input type="datetime-local" name="dueDate" id="dateTime" class="form-control datepicker">
-                    </div>
-
-                    <button class="btn btn-primary">
-                        Assign Task
-                    </button>
-                </form>
-            <!-- Default form register -->
-            </div>
-            <div class="modal-footer">
-              {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button> --}}
-            </div>
-          </div>
-        </div>
-      </div>
-    
-    
-    
     
     
 {{-- END OF MODAL TWO --}}
@@ -1175,7 +1228,8 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
         <script src="/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
         <!-- END THEME LAYOUT SCRIPTS -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> --}}
+        <script src="/js/toastr.min.js"></script>
         <script>
             toastr.options.closeButton = true;
             @if(Session::has('error'))

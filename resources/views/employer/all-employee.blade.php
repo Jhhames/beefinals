@@ -70,7 +70,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             
                             <!-- End Toggle Button -->
                             <!-- BEGIN LOGO -->
-                            <a id="index" class="page-logo" href="">
+                            <a id="index" class="page-logo" href="/home">
                                 {{-- <img src="" alt="Logo">  --}}
                                 <span style="font-family: 'Anton', sans-serif; font-size: 40px">
                                         EM<span style="color:white !important">S</span>
@@ -231,29 +231,25 @@ License: You must have a valid license purchased only from themeforest(the above
             </a>
             <ul>
                 <li>
-                    <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" target="_blank" class="active">
-                        <span>Purchase Metronic</span>
-                        <i class="icon-basket"></i>
+                    <a href="/home" class="active">
+                        <span>Home</span>
+                        <i class="icon-home"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/reviews/4021469?ref=keenthemes" target="_blank">
-                        <span>Customer Reviews</span>
+                    <a href="">
+                        <span>All Employees</span>
                         <i class="icon-users"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="http://keenthemes.com/showcast/" target="_blank">
-                        <span>Showcase</span>
-                        <i class="icon-user"></i>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        <span>Logout</span>
+                        <i class="icon-logout"></i>
                     </a>
                 </li>
-                <li>
-                    <a href="http://keenthemes.com/metronic-theme/changelog/" target="_blank">
-                        <span>Changelog</span>
-                        <i class="icon-graph"></i>
-                    </a>
-                </li>
+                
             </ul>
             <span aria-hidden="true" class="quick-nav-bg"></span>
         </nav>
@@ -288,53 +284,53 @@ License: You must have a valid license purchased only from themeforest(the above
                     <li class="list-group-item active">
                       <div class="md-v-line"></div><i class="fa fa-laptop mr-4 pr-3"></i> <strong>Position</strong> 
                       <span class="lead badge badge-success">
-                          {{ $item->position }}
+                          {{ $item->position ?? 'NIL' }}
                       </span>
                     </li>
                     <li class="list-group-item active">
                       <div class="md-v-line"></div><i class="fa fa-home mr-5"></i> Home Address
                       <span class="lead badge badge-success">
-                          {{ $item->home_address }}
+                          {{ $item->home_address ?? 'NIL' }}
 
                       </span>
                     </li>
                     <li class="list-group-item active">
                       <div class="md-v-line"></div><i class="fa fa-phone mr-5"></i> Contact 
                       <span class="lead badge badge-success">
-                          {{ $item->mobile }}
+                        {{ $item->mobile ?? 'NIL' }}
                       </span>
                     </li>
                     <li class="list-group-item active">
                       <div class="md-v-line"></div><i class="fa fa-envelope mr-5"></i> Email Address
                       <span class="badge badge-success">
-                          {{ $item->email }}
+                          {{ $item->email ?? 'NIL' }}
                       </span>
                     </li>
                     <li class="list-group-item active">
                       <div class="md-v-line"></div><i class="fa fa-bank mr-5"></i> Bank 
                       <span class="badge badge-success lead">
-                          {{ $item->bank }}
+                          {{ $item->bank ?? 'NIL' }}
                       </span>
 
                     </li>
                     <li class="list-group-item active">
                       <div class="md-v-line"></div><i class="fa fa-credit-card mr-5"></i> Account Number 
                       <span class="badge badge-success lead">
-                          {{ $item->account_number }}
+                          {{ $item->account_number ?? 'NIL' }}
                       </span>
 
                     </li>
                     <li class="list-group-item active">
                       <div class="md-v-line"></div><i class="fa fa-money mr-5"></i> Salary 
                       <span class="badge badge-success lead">
-                         <strike> N</strike> {{ $item->salary }}
+                        &#8358; {{ $item->salary  ?? 'NIL' }}
                       </span>
 
                     </li>
                     <li class="list-group-item active">
                       <div class="md-v-line"></div><i class="fa fa-hospital-o mr-5"></i> Disabilities 
                       <span class="badge badge-success lead">
-                          {{ $item->disablities }}
+                          {{ $item->disablities ?? 'NIL' }}
                       </span>
 
                     </li>

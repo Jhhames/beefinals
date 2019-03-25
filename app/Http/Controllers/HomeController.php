@@ -8,8 +8,11 @@ use DateTime;
 use App\Leave;
 use App\Activity;
 use App\Employee;
+use App\Training;
 use App\Appraisal;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -44,7 +47,8 @@ class HomeController extends Controller
             'pending' => $this->getPending(),
             'tasks' => $this->getTasks(),
             'pendingTasks' => $this->getPendingTasks(),
-            'activities' => $this->getActivities()
+            'activities' => $this->getActivities(),
+            'training' => $this->getTraining()
         ]);
     }
 
@@ -91,7 +95,38 @@ class HomeController extends Controller
             $activity = new Activity;
             $notification = Auth::user()->name.' added new task for '.$request->employee;
             $activity->addActivity('task', $notification);
-            Session::flash('success','Task added successfully for'.$request->employee);
+            Session::flash('success','Task added successfully for '.$request->employee);
+            return redirect()->back();
+        }else{
+            Session::flash('error','Some Error occurred, try again');
+            return redirect()->back();
+        }
+    }
+
+    public function makeTraining(Request $request){
+        $this->validate($request,[
+            'training' => 'required',
+            'description' => 'required|max:500',
+            'dueDate' => 'required',
+            'employee' => 'required'
+        ]);    
+
+        $date = $request->dueDate;
+        $dateTimeStamp = DateTime::createFromFormat('d-m-yy',$date);
+
+        $task = new Training;
+        $task->name = $request->training;
+        $task->description = $request->description;
+        $task->assigned_at = Time();
+        $task->due_date = $request->dueDate;
+        $task->employee = $request->employee;
+        $task->employer = Auth::user()->name;
+        
+        if($task->save()){
+            $activity = new Activity;
+            $notification = Auth::user()->name.' added new training exercise for '.$request->employee;
+            $activity->addActivity('task', $notification);
+            Session::flash('success','Training exercise added for '.$request->employee);
             return redirect()->back();
         }else{
             Session::flash('error','Some Error occurred, try again');
@@ -101,6 +136,9 @@ class HomeController extends Controller
 
     public function getTasks(){
         return Task::all();        
+    }
+    public function getTraining(){
+        return Training::all();        
     }
 
     public function getPendingTasks(){
@@ -134,6 +172,13 @@ class HomeController extends Controller
 
     }
 
+    public function getAppr(){
+        return response()->json($this->getAppraisals(),200);
+    }
+
+    public function getLvs(){
+        return response()->json($this->getLeave(),200);
+    }
     public function getAppraisals(){
         return Appraisal::latest()->get();
     }   
@@ -161,7 +206,7 @@ class HomeController extends Controller
     }
     public function addEmployee(Request $request){
         $this->validate($request,[
-            'email' => 'required',
+            'email' => 'required|unique:employees',
             'name' => 'required',
             'position' => 'required',
             'salary' => 'required'
@@ -223,6 +268,7 @@ class HomeController extends Controller
             $act->timeLeft = $timeleft;
         }
 
+        // dd($activities);
         return $activities;
     }
 
@@ -233,7 +279,7 @@ class HomeController extends Controller
     public function getTimeLeft($start, $stop){
         $timeStampLeft = $stop - $start;
 
-        $min = $sec = $hr = 0;
+        $wk = $day = $min = $sec = $hr = 0;
 
         if($timeStampLeft >= 60){
             $min = floor($timeStampLeft / 60);
@@ -242,18 +288,49 @@ class HomeController extends Controller
             if($min >= 60 ){
                 $hr = floor($min / 60);
                 $min = $min % 60;
+
+                if($hr >= 24 ){
+                    $day = floor($hr / 24);
+                    $hr = $hr % 24;
+
+                    if($day >= 7){
+                        $wk = floor($day / 7);
+                        $day = $day % 7;
+                    }
+                }
+
             }
         }else{
             $sec = $timeStampLeft;
         }
 
         $timeLeft = [
+            'week' => (int)$wk,
+            'day' => (int)$day,
             'hour' =>(int)$hr,
             'min' => $min,
-            'sec' => $sec
+            'sec' => $sec,
+            'stamp' => $timeStampLeft
         ];
 
         return $timeLeft;
+    }
+
+    public function downloadAppraisal(Request $request, $id){
+        // return $id;
+        $appraisal = Appraisal::where('id',$id)->first();
+
+        $data = [
+            'name' => $appraisal->employee,
+            'appraised_by' => $appraisal->employer,
+            'summary' => $appraisal->summary,
+            'report' => $appraisal->report
+        ];
+
+        $pdf = App::make('dompdf.wrapper');
+
+        $pdf->loadView('pdf.appraisal',$data);
+        return $pdf->download($data['name'].'.pdf');
     }
 
     protected function getEmployees(){

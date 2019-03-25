@@ -1,0 +1,20 @@
+0000000000000000000000000000000000000000 b19d71df8cf4be9273e9d91900606d2b9358ac9f Jhhames <fjhhames@gmail.com> 1544593313 +0100	commit (initial): project init
+b19d71df8cf4be9273e9d91900606d2b9358ac9f 2965fbb95ebd8d1f1fb3975a8f3c40269f3f035a Jhhames <fjhhames@gmail.com> 1544809018 +0100	commit: 50% done
+2965fbb95ebd8d1f1fb3975a8f3c40269f3f035a 568fb964ed5b6bf0c230db5608a37abe864b4f16 Jhhames <fjhhames@gmail.com> 1544944474 +0100	commit: heroku push v1
+568fb964ed5b6bf0c230db5608a37abe864b4f16 54ca05d0afc4269e31435b03bb67fa5e853b498b Jhhames <fjhhames@gmail.com> 1544944598 +0100	commit: heroku push v2
+54ca05d0afc4269e31435b03bb67fa5e853b498b 0efd46e4ad10709e9db8e5c3c219597aced8a16a Jhhames <fjhhames@gmail.com> 1544951087 +0100	commit: admin dashboard almost done
+0efd46e4ad10709e9db8e5c3c219597aced8a16a b587cd6423a1fa70ff42303fb98f4d17dad40931 Jhhames <fjhhames@gmail.com> 1544952591 +0100	commit: add admin
+b587cd6423a1fa70ff42303fb98f4d17dad40931 20d7181376f14a3e81241a979b520a3fb112f619 Jhhames <fjhhames@gmail.com> 1544966205 +0100	commit: user half done
+20d7181376f14a3e81241a979b520a3fb112f619 c5d11e6e19b41016b0586675bd084e1d65bf2160 Jhhames <fjhhames@gmail.com> 1544975299 +0100	commit: add leave user
+c5d11e6e19b41016b0586675bd084e1d65bf2160 708836e943f00aa36ec510e95c641303ddf7eea2 Jhhames <fjhhames@gmail.com> 1544979514 +0100	commit: initial release
+708836e943f00aa36ec510e95c641303ddf7eea2 d1f93d6657af0ac2703ed30ce77568f90e256811 Jhhames <fjhhames@gmail.com> 1545082254 +0100	commit: activites
+d1f93d6657af0ac2703ed30ce77568f90e256811 69d2ffff326e5dc794152fd1dc45304d7a70c8c9 Jhhames <fjhhames@gmail.com> 1545107819 +0100	commit: hakn
+69d2ffff326e5dc794152fd1dc45304d7a70c8c9 5078a862ffc9277efb4fcad5d3e5d69880f02e2f Jhhames <fjhhames@gmail.com> 1545112744 +0100	commit: lsmls
+5078a862ffc9277efb4fcad5d3e5d69880f02e2f 1e19449164bf30a22fad855838ff275405c7d7cb Jhhames <fjhhames@gmail.com> 1545124564 +0100	commit: update password
+1e19449164bf30a22fad855838ff275405c7d7cb 332d71cfa436042a2ccedf8cc6103b9dfcd3d368 Jhhames <fjhhames@gmail.com> 1545125894 +0100	commit: update task
+332d71cfa436042a2ccedf8cc6103b9dfcd3d368 a3d20cb4e247f16e9d188ee2fbfe9a38ab4ad536 Jhhames <fjhhames@gmail.com> 1545126055 +0100	commit: add activity
+a3d20cb4e247f16e9d188ee2fbfe9a38ab4ad536 3a99f1bea3bbdea8194e3b2cf950e2b01c99d70a Jhhames <fjhhames@gmail.com> 1545126729 +0100	commit: remove lorem
+3a99f1bea3bbdea8194e3b2cf950e2b01c99d70a c423cd96b8130e3dab9e9a558573a7c8fb49c34c Jhhames <fjhhames@gmail.com> 1545560163 +0100	commit: change admin login page
+c423cd96b8130e3dab9e9a558573a7c8fb49c34c 2bc5d77c473caf57a365d935e2fccb6b9f65eeb7 Jhhames <fjhhames@gmail.com> 1546053517 +0100	commit: icon title and index style fix
+2bc5d77c473caf57a365d935e2fccb6b9f65eeb7 532d31d0d764b16d45683f38b09018127bae9d84 Jhhames <fjhhames@gmail.com> 1546054456 +0100	commit: change in employee icon
+532d31d0d764b16d45683f38b09018127bae9d84 f96dcd9c2e0ee969fe768d9ccc2862f72d5ff7e0 Jhhames <fjhhames@gmail.com> 1546058133 +0100	commit: menu nav and time
