@@ -50,7 +50,7 @@ class EmployeeController extends Controller
                 'tasks' => $this->getMyTasks(),
                 'leaves' => Leave::where('employee', $this->employee->user()->name)->get(),
                 'activities' => $this->homeController->getActivities(),
-                'training'=> Training::all()
+                'training'=> Training::where('employee', $this->employee->user()->name)->get()
             ]);
         }else{
             return redirect()->route('employee.update');
